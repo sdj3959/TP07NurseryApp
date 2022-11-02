@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/bnv_menu_home"
+        android:title="HOME"
+        android:icon="@drawable/home"/>
+    <item android:id="@+id/bnv_menu_trip"
+        android:title="TRIP"
+        android:icon="@drawable/trip"/>
+    <item android:id="@+id/bnv_menu_more"
+        android:title="MORE"
+        android:icon="@drawable/more"/>
+
+</menu>

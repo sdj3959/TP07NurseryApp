@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/brand">
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"/>
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@color/white"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_below="@+id/tv"/>-->
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/house"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/app_name"-->
+<!--        android:textSize="50sp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_below="@id/iv"-->
+<!--        android:layout_centerHorizontal="true"/>-->
+
+    <ImageView
+        android:id="@+id/tv"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:src="@drawable/custom_image_title"
+        android:layout_below="@id/iv"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerInside"/>
+
+    <EditText
+        android:id="@+id/et_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="아이디 입력"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:layout_below="@id/tv"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/custom_image_edit2"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawablePadding="12dp"
+        android:padding="8dp"
+        android:ems="7"/>
+
+    <EditText
+        android:id="@+id/et_pw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_id"
+        android:layout_alignLeft="@id/et_id"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_image_edit2"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:drawablePadding="12dp"
+        android:ems="7"
+        android:hint="비밀번호 입력"
+        android:inputType="textPassword"
+        android:padding="8dp"
+        android:textSize="20sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_login"
+        android:text="로그인"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/bmjua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkbox"
+        android:layout_alignLeft="@id/et_id"
+        android:background="@drawable/custom_image_login_btn"/>
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_pw"
+        android:buttonTint="#00BCEC"
+        android:layout_toLeftOf="@id/tv_save"/>
+
+    <TextView
+        android:id="@+id/tv_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="계정 저장"
+        android:layout_below="@id/et_pw"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/tv_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/your_string_here"
+        android:textSize="20sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"/>
+
+</RelativeLayout>

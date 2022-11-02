@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:id="@+id/tv_nursery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="더보기"
+            android:textSize="40sp"
+            android:textColor="@color/gray"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"/>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal"
+            android:columnCount="4">
+
+            <LinearLayout android:orientation="vertical"
+                android:layout_columnWeight="1"
+                android:background="@drawable/bg_grid"
+                android:id="@+id/info">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_info_24"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="어린이집 정보"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"
+                android:layout_columnWeight="1"
+                android:background="@drawable/bg_grid"
+                android:id="@+id/logout">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_logout_24"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="로그아웃"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:orientation="vertical"
+                android:layout_columnWeight="1"
+                android:id="@+id/note"
+                android:layout_width="80dp"
+                android:layout_height="106dp">
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"
+                android:layout_columnWeight="1"
+                android:id="@+id/calendar"
+                android:layout_width="80dp"
+                android:layout_height="106dp">
+            </LinearLayout>
+
+
+        </GridLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

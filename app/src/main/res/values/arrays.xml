@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="test">
+        <item>왕십리 어린이집</item>
+        <item>종로 어린이집</item>
+        <item>강남 어린이집</item>
+        <item>강북 어린이집</item>
+    </string-array>
+
+    <string-array name="city">
+        <item>서울특별시</item>
+    </string-array>
+
+    <string-array name="gu">
+        <item>종로구</item>
+        <item>성동구</item>
+        <item>마포구</item>
+        <item>노원구</item>
+    </string-array>
+</resources>
