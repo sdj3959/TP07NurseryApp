@@ -40,13 +40,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:orientation="horizontal"
+            android:padding="8dp"
             android:columnCount="4">
 
             <LinearLayout android:orientation="vertical"
                 android:layout_columnWeight="1"
-                android:background="@drawable/bg_grid"
-                android:id="@+id/notice">
+                android:id="@+id/notice"
+                android:layout_margin="2dp">
                 <ImageView
+                    android:id="@+id/click"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/custom_image_notice"
@@ -55,13 +57,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="공지사항"
+                    android:textColor="@color/gray"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"/>
             </LinearLayout>
             <LinearLayout android:orientation="vertical"
                 android:layout_columnWeight="1"
-                android:background="@drawable/bg_grid"
-                android:id="@+id/album">
+                android:id="@+id/album"
+                android:layout_margin="2dp">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -72,12 +75,13 @@
                     android:layout_height="wrap_content"
                     android:text="앨범"
                     android:layout_gravity="center"
+                    android:textColor="@color/gray"
                     android:layout_marginTop="10dp"/>
             </LinearLayout>
             <LinearLayout android:orientation="vertical"
                 android:layout_columnWeight="1"
-                android:background="@drawable/bg_grid"
-                android:id="@+id/note">
+                android:id="@+id/note"
+                android:layout_margin="2dp">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,13 +91,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="알림장"
+                    android:textColor="@color/gray"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"/>
             </LinearLayout>
             <LinearLayout android:orientation="vertical"
                 android:layout_columnWeight="1"
-                android:background="@drawable/bg_grid"
-                android:id="@+id/calendar">
+                android:id="@+id/calendar"
+                android:layout_margin="2dp">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -103,13 +108,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="일정표"
+                    android:textColor="@color/gray"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"/>
             </LinearLayout>
             <LinearLayout android:orientation="vertical"
                 android:layout_columnWeight="1"
-                android:background="@drawable/bg_grid"
-                android:id="@+id/foodmenu">
+                android:id="@+id/foodmenu"
+                android:layout_margin="2dp">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -119,6 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="식단표"
+                    android:textColor="@color/gray"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"/>
             </LinearLayout>

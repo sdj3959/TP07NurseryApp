@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">유아노트</string>
     <string name="your_string_here"><u>회원이 아니신가요?</u>.</string>
+
+
+    <string name="drawer_open">열렸음</string>
+    <string name="drawer_close">닫혔음</string>
 </resources>
