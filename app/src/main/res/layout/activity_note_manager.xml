@@ -36,22 +36,33 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/tv_name"
+    <Spinner
+        android:id="@+id/spinner_children"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="홍길동 어린이"
-        android:textSize="40sp"
-        android:textColor="@color/gray"
-        android:layout_margin="10dp"
+        android:spinnerMode="dropdown"
+        android:entries="@array/test"
+        android:layout_margin="16dp"
+        android:padding="8dp"
         android:layout_below="@id/appbar_layout"/>
+
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="조회"
+        android:fontFamily="@font/bmjua"
+        android:layout_below="@id/appbar_layout"
+        android:layout_margin="8dp"
+        android:layout_alignParentRight="true"
+        android:backgroundTint="@color/gray"/>
 
     <View
         android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/gray"
-        android:layout_below="@id/tv_name"/>
+        android:layout_below="@id/spinner_children"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"

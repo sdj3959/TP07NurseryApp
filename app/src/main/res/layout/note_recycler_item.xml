@@ -20,6 +20,17 @@
             android:src="@drawable/bg_one02"
             android:layout_marginTop="10dp"/>
 
+<!--        <TextView-->
+<!--            android:id="@+id/tv_name"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="홍길동 어린이"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:layout_below="@id/iv"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:layout_marginTop="10dp"/>-->
+
         <TextView
             android:id="@+id/tv_message"
             android:layout_width="wrap_content"
