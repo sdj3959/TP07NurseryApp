@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="8dp"
+    app:cardCornerRadius="8dp"
+    app:contentPadding="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_profile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/bg_one02"/>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="홍길동 원장님"
+            android:textSize="20sp"
+            android:layout_toRightOf="@id/civ_profile"
+            android:layout_marginTop="25dp"/>
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2022년 10월 10일"
+            android:layout_alignParentRight="true"
+            android:layout_above="@id/line"/>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray"
+            android:layout_below="@id/civ_profile"/>
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:src="@drawable/bg_one02"
+            android:layout_below="@id/line"
+            android:layout_marginTop="10dp"
+            android:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="제목입니다."
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:layout_below="@id/iv"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="안녕하세요 만나서 반갑습니다."
+            android:textColor="@color/gray"
+            android:textSize="18dp"
+            android:layout_below="@id/tv_title"
+            android:layout_margin="10dp"/>
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

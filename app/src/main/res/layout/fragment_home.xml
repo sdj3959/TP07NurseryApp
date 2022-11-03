@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="왕십리 어린이집"
             android:textSize="30sp"
-            android:textColor="@color/gray"
+            android:textColor="@color/brand"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"/>
 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="8dp"
+    app:cardCornerRadius="8dp"
+    app:contentPadding="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:src="@drawable/bg_one02"
+            android:layout_marginTop="10dp"/>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray"
+            android:layout_below="@id/iv"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="안녕하세요 만나서 반갑습니다."
+            android:textColor="@color/gray"
+            android:textSize="18dp"
+            android:layout_below="@id/line"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2022년 10월 10일"
+            android:layout_below="@id/tv_message"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"/>
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

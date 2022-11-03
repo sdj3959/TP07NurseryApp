@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoticeActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="8dp">
+
+        <Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="어린이집 정보"
+                android:textSize="25sp"
+                android:textColor="@color/brand"
+                android:layout_gravity="center"/>
+
+        </Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="어린이집명"
+        android:textSize="20sp"
+        android:layout_below="@id/appbar_layout"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_nursery_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="왕십리 어린이집"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="30sp"
+        android:textColor="#3F51B5"
+        android:layout_below="@id/tv"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="주소"
+        android:textSize="20sp"
+        android:layout_below="@id/tv_nursery_name"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="서울특별시 성동구 왕십리로 132 한동타워 5강의실"
+        android:textSize="25sp"
+        android:textColor="#2196F3"
+        android:layout_below="@id/tv2"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:maxLines="2"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="전화번호"
+        android:textSize="20sp"
+        android:layout_below="@id/tv_address"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_tel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="02-111-2222"
+        android:textSize="25sp"
+        android:textColor="@color/etc"
+        android:layout_below="@id/tv3"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:maxLines="1"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="위치"
+        android:textSize="30sp"
+        android:layout_below="@id/tv_tel"
+        android:layout_margin="30dp"/>
+
+</RelativeLayout>

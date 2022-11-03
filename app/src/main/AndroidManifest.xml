@@ -14,13 +14,19 @@
         android:theme="@style/Theme.TP07NurseryApp"
         tools:targetApi="31">
         <activity
+            android:name=".NoteParentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NurseryInfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".FoodMenuActivity"
             android:exported="false" />
         <activity
             android:name=".CalendarActivity"
-            android:exported="false" />
-        <activity
-            android:name=".NoteActivity"
             android:exported="false" />
         <activity
             android:name=".AlbumActivity"
