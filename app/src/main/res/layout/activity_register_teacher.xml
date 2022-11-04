@@ -33,7 +33,8 @@
             android:layout_height="wrap_content"
             android:text=" 교사 회원가입"
             android:textColor="@color/brand"
-            android:textSize="40sp"/>
+            android:textSize="40sp"
+            android:layout_centerHorizontal="true"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile"

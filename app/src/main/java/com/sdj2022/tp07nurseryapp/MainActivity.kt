@@ -97,6 +97,6 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
             binding.drawerLayout.closeDrawer(GravityCompat.START)
-        }else onBackPressed()
+        }else finish()
     }
 }//MainActivity
