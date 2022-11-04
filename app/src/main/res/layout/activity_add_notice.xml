@@ -13,7 +13,7 @@
         android:background="@color/white"
         android:elevation="8dp">
 
-        <Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -38,7 +38,7 @@
                 android:backgroundTint="#C3E8C2"
                 android:layout_marginRight="20dp"/>
 
-        </Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 

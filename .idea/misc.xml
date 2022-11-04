@@ -32,8 +32,20 @@
         <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1755" />
         <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/font/custom_font_family.xml" value="0.2828125" />
         <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_account.xml" value="0.21936936936936938" />
+        <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_add_album.xml" value="0.21936936936936938" />
+        <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_add_note.xml" value="0.21936936936936938" />
+        <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_add_notice.xml" value="0.21936936936936938" />
+        <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_album.xml" value="0.21936936936936938" />
+        <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_calendar.xml" value="0.21936936936936938" />
+        <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_food_menu.xml" value="0.21936936936936938" />
         <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_intro.xml" value="0.21936936936936938" />
         <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_main.xml" value="0.21936936936936938" />
+        <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_map.xml" value="0.21936936936936938" />
+        <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_note_manager.xml" value="0.21936936936936938" />
+        <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_note_parent.xml" value="0.21936936936936938" />
+        <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_notice.xml" value="0.21936936936936938" />
+        <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_nursery_info.xml" value="0.21936936936936938" />
+        <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_photo.xml" value="0.21936936936936938" />
         <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_register_director.xml" value="0.21936936936936938" />
         <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_register_parent.xml" value="0.21936936936936938" />
         <entry key="..\:/Mrhi/mrhi/Android/Projects/TP07NurseryApp/app/src/main/res/layout/activity_register_select.xml" value="0.21936936936936938" />

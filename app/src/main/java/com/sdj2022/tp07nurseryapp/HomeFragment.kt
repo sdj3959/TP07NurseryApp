@@ -36,7 +36,7 @@ class HomeFragment:Fragment() {
         var intent = when(menus){
             0-> Intent(activity, NoticeActivity::class.java)
             1-> Intent(activity, AlbumActivity::class.java)
-            2-> Intent(activity, NoteParentActivity::class.java)
+            2-> Intent(activity, NoteManagerActivity::class.java)
             3-> Intent(activity, CalendarActivity::class.java)
             4-> Intent(activity, FoodMenuActivity::class.java)
             else-> null

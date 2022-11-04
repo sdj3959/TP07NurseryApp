@@ -2,11 +2,11 @@ package com.sdj2022.tp07nurseryapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.sdj2022.tp07nurseryapp.databinding.ActivityNurseryInfoBinding
+import com.sdj2022.tp07nurseryapp.databinding.ActivityMapBinding
 
-class NurseryInfoActivity : AppCompatActivity() {
+class MapActivity : AppCompatActivity() {
 
-    val binding by lazy { ActivityNurseryInfoBinding.inflate(layoutInflater) }
+    val binding by lazy {ActivityMapBinding.inflate(layoutInflater)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

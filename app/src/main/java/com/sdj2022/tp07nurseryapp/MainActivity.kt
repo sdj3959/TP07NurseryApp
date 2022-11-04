@@ -85,6 +85,8 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }
+
+                R.id.menu_nursery_info -> startActivity(Intent(this, NurseryInfoActivity::class.java))
             }
             binding.drawerLayout.closeDrawer(binding.nav)
 
