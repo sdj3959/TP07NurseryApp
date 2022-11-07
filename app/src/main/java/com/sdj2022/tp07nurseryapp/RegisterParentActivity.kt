@@ -4,6 +4,8 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.CalendarView
@@ -11,6 +13,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.widget.addTextChangedListener
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
@@ -39,27 +42,45 @@ class RegisterParentActivity : AppCompatActivity() {
 
         binding.date.text = SimpleDateFormat("yyyy.MM.dd").format(Date().time)
 
+        binding.etPw2.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                if(binding.etPw2.text.toString().equals(binding.etPw.text.toString())){
+                    binding.tvPwCheckCorrect.visibility = View.VISIBLE
+                    binding.tvPwCheckWrong.visibility = View.INVISIBLE
+                }else{
+                    binding.tvPwCheckCorrect.visibility = View.INVISIBLE
+                    binding.tvPwCheckWrong.visibility = View.VISIBLE
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+        })
+
 
 
         binding.btnComplete.setOnClickListener {
 
-            var email = binding.etEmail.text.toString()
-            var pw = binding.etPw.text.toString()
-            var name = binding.etName.text.toString()
-            var birth = binding.date.text.toString()
-            var nursery = binding.spinnerNursery.selectedItem.toString()
-            var account = GAccount(email, pw, nursery, name, birth, null)
-
             auth = FirebaseAuth.getInstance()
 
-            if(!email.equals(null) && !pw.equals(null) && pw.length>=6 && binding.etPw2.text.toString().equals(binding.etPw.text.toString()) && !name.equals(null)){
+            if(!binding.etEmail.text.toString().equals(null) && !binding.etPw.text.toString().equals(null) && binding.etPw.text.toString().length>=6 && binding.etPw2.text.toString().equals(binding.etPw.text.toString()) && !binding.etName.text.toString().equals(null)){
 
-                auth.createUserWithEmailAndPassword(email, pw).addOnCompleteListener(this){
+                auth.createUserWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPw.text.toString()).addOnCompleteListener(this){
                     if(it.isSuccessful){
 
                         Toast.makeText(this, "회원가입 완료!", Toast.LENGTH_SHORT).show()
 
-                        Log.i("MY", "success")
+                        var email = binding.etEmail.text.toString()
+                        var pw = binding.etPw.text.toString()
+                        var name = binding.etName.text.toString()
+                        var birth = binding.date.text.toString()
+                        var nursery = binding.spinnerNursery.selectedItem.toString()
+                        var account = GAccount(email, pw, nursery, name, birth, null)
 
 
 
@@ -81,15 +102,14 @@ class RegisterParentActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(this, "회원정보를 다시 확인하세요.", Toast.LENGTH_SHORT).show()
             }
-
-
-
-
-        }
+        }//btnComplete onClick
         
         binding.profile.setOnClickListener{ clickImg() }
         binding.date.setOnClickListener { showBottomSheetDialogCalendar() }
-    }
+
+    }//onCreate
+
+
 
     fun showBottomSheetDialogCalendar(){
         val bsd = BottomSheetDialog(this)

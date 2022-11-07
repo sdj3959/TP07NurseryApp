@@ -94,9 +94,9 @@
 
         <EditText
             android:id="@+id/et_email"
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:hint="이메일 입력"
+            android:hint="example@example.com"
             android:inputType="text"
             android:textSize="18sp"
             android:layout_alignLeft="@id/et_pw2"
@@ -104,7 +104,7 @@
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/brand"
             android:padding="8dp"
-            android:ems="7"/>
+            android:ems="12"/>
 
 <!--        <Button-->
 <!--            android:id="@+id/btn_id_check"-->
@@ -119,9 +119,9 @@
 
         <EditText
             android:id="@+id/et_pw"
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:hint="비밀번호 입력"
+            android:hint="비밀번호 입력 (6자 이상)"
             android:inputType="textPassword"
             android:textSize="18sp"
             android:layout_alignLeft="@id/et_pw2"
@@ -129,7 +129,7 @@
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/brand"
             android:padding="8dp"
-            android:ems="7"/>
+            android:ems="12"/>
 
         <TextView
             android:id="@+id/tv_pw2"
@@ -143,9 +143,9 @@
 
         <EditText
             android:id="@+id/et_pw2"
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:hint="비밀번호 입력"
+            android:hint="비밀번호 다시 입력"
             android:inputType="textPassword"
             android:textSize="18sp"
             android:layout_toRightOf="@id/tv_pw2"
@@ -153,17 +153,28 @@
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/brand"
             android:padding="8dp"
-            android:ems="7"/>
+            android:ems="12"/>
 
         <TextView
-            android:id="@+id/tv_pw_check"
+            android:id="@+id/tv_pw_check_wrong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="비밀번호가 다릅니다."
-            android:textSize="12sp"
+            android:textSize="10sp"
             android:textColor="#FFFF0000"
-            android:layout_toRightOf="@id/et_pw2"
-            android:layout_alignBottom="@id/et_pw2"
+            android:layout_below="@id/et_pw2"
+            android:layout_alignLeft="@id/et_pw2"
+            android:layout_marginLeft="10dp"
+            android:visibility="invisible"/>
+        <TextView
+            android:id="@+id/tv_pw_check_correct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호가 일치합니다."
+            android:textSize="10sp"
+            android:textColor="#FF00FF00"
+            android:layout_below="@id/et_pw2"
+            android:layout_alignLeft="@id/et_pw2"
             android:layout_marginLeft="10dp"
             android:visibility="invisible"/>
 
