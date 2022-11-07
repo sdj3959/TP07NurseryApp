@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -48,4 +49,14 @@ dependencies {
     implementation 'com.github.chrisbanes:PhotoView:2.0.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.bumptech.glide:glide:4.14.2'
+
+    // Firebase Core Platform SDK 라이브러리
+    implementation platform('com.google.firebase:firebase-bom:31.0.2')
+
+    // Firebase Cloud Firestore
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+    // Firebase Cloud Firestorage
+    implementation 'com.google.firebase:firebase-storage-ktx'
+    // Firebase Authentication
+    implementation 'com.google.firebase:firebase-auth-ktx'
 }

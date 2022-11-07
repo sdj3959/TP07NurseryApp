@@ -50,10 +50,10 @@
         android:scaleType="centerInside"/>
 
     <EditText
-        android:id="@+id/et_id"
+        android:id="@+id/et_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="아이디 입력"
+        android:hint="이메일 입력"
         android:inputType="text"
         android:textSize="20sp"
         android:layout_below="@id/tv"
@@ -70,8 +70,8 @@
         android:id="@+id/et_pw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/et_id"
-        android:layout_alignLeft="@id/et_id"
+        android:layout_below="@id/et_email"
+        android:layout_alignLeft="@id/et_email"
         android:layout_marginTop="5dp"
         android:background="@drawable/custom_image_edit2"
         android:drawableLeft="@drawable/ic_baseline_lock_24"
@@ -91,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/checkbox"
-        android:layout_alignLeft="@id/et_id"
+        android:layout_alignLeft="@id/et_email"
         android:background="@drawable/custom_image_login_btn"/>
 
     <CheckBox

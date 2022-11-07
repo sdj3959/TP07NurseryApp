@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/profile"
             android:layout_marginTop="20dp"
-            android:layout_alignLeft="@id/et_id"
+            android:layout_alignLeft="@id/et_email"
             android:backgroundTint="@color/brand"
             android:ems="7"
             android:hint="성명 입력"
@@ -74,7 +74,7 @@
             android:id="@+id/tv_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="아이디"
+            android:text="이메일"
             android:layout_below="@id/tv_name"
             android:layout_alignRight="@id/tv_pw2"
             android:textSize="18sp"
@@ -93,10 +93,10 @@
             android:layout_marginTop="30dp"/>
 
         <EditText
-            android:id="@+id/et_id"
+            android:id="@+id/et_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="아이디 입력"
+            android:hint="이메일 입력"
             android:inputType="text"
             android:textSize="18sp"
             android:layout_below="@id/tv_name"
@@ -107,16 +107,16 @@
             android:padding="8dp"
             android:ems="7"/>
 
-        <Button
-            android:id="@+id/btn_id_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="중복확인"
-            android:fontFamily="@font/bmjua"
-            android:backgroundTint="@color/etc"
-            android:layout_toRightOf="@id/et_id"
-            android:layout_marginLeft="10dp"
-            android:layout_alignBottom="@id/et_id"/>
+<!--        <Button-->
+<!--            android:id="@+id/btn_id_check"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="중복확인"-->
+<!--            android:fontFamily="@font/bmjua"-->
+<!--            android:backgroundTint="@color/etc"-->
+<!--            android:layout_toRightOf="@id/et_email"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:layout_alignBottom="@id/et_email"/>-->
 
         <EditText
             android:id="@+id/et_pw"
@@ -126,7 +126,7 @@
             android:inputType="textPassword"
             android:textSize="18sp"
             android:layout_toRightOf="@id/tv_id"
-            android:layout_below="@id/et_id"
+            android:layout_below="@id/et_email"
             android:layout_marginTop="10dp"
             android:layout_alignLeft="@id/et_pw2"
             android:backgroundTint="@color/brand"
