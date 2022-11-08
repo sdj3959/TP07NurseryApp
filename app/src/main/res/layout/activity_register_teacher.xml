@@ -232,10 +232,9 @@
                 android:id="@+id/spinner_nursery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"
-                android:entries="@array/test"
+                android:spinnerMode="dialog"
+                android:entries="@array/select"
                 android:layout_margin="16dp"
-                android:padding="8dp"
                 android:visibility="invisible"/>
 
         </LinearLayout>

@@ -1,7 +1,9 @@
 package com.sdj2022.tp07nurseryapp
 
+import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler

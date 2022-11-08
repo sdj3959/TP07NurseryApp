@@ -90,27 +90,28 @@
         android:fontFamily="@font/bmjua"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/checkbox"
+        android:layout_below="@id/et_pw"
+        android:layout_marginTop="40dp"
         android:layout_alignLeft="@id/et_email"
         android:background="@drawable/custom_image_login_btn"/>
 
-    <CheckBox
-        android:id="@+id/checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_pw"
-        android:buttonTint="#00BCEC"
-        android:layout_toLeftOf="@id/tv_save"/>
+<!--    <CheckBox-->
+<!--        android:id="@+id/checkbox"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/et_pw"-->
+<!--        android:buttonTint="#00BCEC"-->
+<!--        android:layout_toLeftOf="@id/tv_save"/>-->
 
-    <TextView
-        android:id="@+id/tv_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="계정 저장"
-        android:layout_below="@id/et_pw"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:textSize="18sp"/>
+<!--    <TextView-->
+<!--        android:id="@+id/tv_save"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="계정 저장"-->
+<!--        android:layout_below="@id/et_pw"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:textSize="18sp"/>-->
 
     <TextView
         android:id="@+id/tv_register"
@@ -118,6 +119,7 @@
         android:layout_height="wrap_content"
         android:text="@string/your_string_here"
         android:textSize="20sp"
+        android:textColor="@color/gray"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"/>
