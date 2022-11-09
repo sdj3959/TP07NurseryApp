@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="240dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:elevation="8dp"
     app:cardCornerRadius="8dp"
@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/iv_thumbs"
@@ -30,8 +30,7 @@
             android:id="@+id/iv"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/house"
-            android:background="@color/brand"
+            android:src="@drawable/one"
             android:padding="2dp"
             android:layout_below="@id/iv_thumbs"/>
         <TextView
@@ -46,9 +45,7 @@
             android:textSize="30sp"
             android:maxLines="1"
             android:ellipsize="end"
-            android:layout_marginLeft="12dp"
-            android:layout_below="@id/iv_thumbs"
-            android:layout_above="@id/tv_address"/>
+            android:layout_below="@id/iv_thumbs"/>
 <!--        <TextView-->
 <!--            android:id="@+id/tv_tel"-->
 <!--            android:layout_width="wrap_content"-->
@@ -61,25 +58,24 @@
 <!--            android:layout_toRightOf="@id/iv"-->
 <!--            android:layout_marginLeft="16dp"-->
 <!--            android:padding="8dp"/>-->
-        <TextView
-            android:id="@+id/tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="주소 :"
-            android:padding="8dp"
-            android:layout_below="@id/iv"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tv"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="주소 :"-->
+<!--            android:padding="8dp"-->
+<!--            android:layout_below="@id/iv"/>-->
         <TextView
             android:id="@+id/tv_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="서울특별시 성동구 왕십리로 122 한동타워 16층 5강의실"
-            android:maxLines="1"
+            android:maxLines="2"
             android:ellipsize="end"
-            android:layout_below="@id/iv"
-            android:layout_toRightOf="@id/tv"
-            android:paddingRight="8dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"/>
+            android:layout_below="@id/tv_title"
+            android:layout_toRightOf="@id/iv"
+            android:layout_marginLeft="12dp"
+            android:padding="8dp"/>
         <TextView
             android:id="@+id/tv_map"
             android:layout_width="wrap_content"
@@ -87,7 +83,7 @@
             android:text="누르면 지도가 보여요!"
             android:textSize="20sp"
             android:textColor="@color/brand"
-            android:layout_below="@id/tv_address"
+            android:layout_below="@id/iv"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"/>
