@@ -57,8 +57,8 @@ class TripFragment:Fragment() {
 //                    activity?.let { activity -> TripAdapter(activity, it) }
 //                }
 
-                apiResponse?.body?.let { binding.recycler.adapter = TripAdapter(activity!!, it) }
-                Toast.makeText(activity, "성공? ${apiResponse?.body?.size}", Toast.LENGTH_SHORT).show()
+                apiResponse?.item?.let { binding.recycler.adapter = TripAdapter(activity!!, it) }
+                Toast.makeText(activity, "성공? ${apiResponse?.item?.size}", Toast.LENGTH_SHORT).show()
 
                 //AlertDialog.Builder(activity).setMessage().show()
             }
