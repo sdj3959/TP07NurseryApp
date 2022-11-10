@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="이메일 입력"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:textSize="20sp"
         android:layout_below="@id/tv"
         android:layout_marginTop="20dp"

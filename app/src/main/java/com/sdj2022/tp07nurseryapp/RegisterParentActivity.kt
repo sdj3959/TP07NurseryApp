@@ -32,6 +32,7 @@ import java.io.InputStreamReader
 import java.net.URL
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.HashMap
 
 class RegisterParentActivity : AppCompatActivity() {
 
@@ -106,23 +107,22 @@ class RegisterParentActivity : AppCompatActivity() {
                             imgRef.putFile(imgUri).addOnSuccessListener {
                                 imgRef.downloadUrl.addOnSuccessListener {
                                     imgUrl = it.toString()
+
+                                    var email = binding.etEmail.text.toString()
+                                    var pw = binding.etPw.text.toString()
+                                    var name = binding.etName.text.toString()
+                                    var birth = binding.date.text.toString()
+                                    var nursery = binding.spinnerNursery.selectedItem.toString()
+                                    var account = GAccount(email, pw, nursery, name, birth, imgUrl,"0")
+
+
+                                    val accountRef = firebaseFirestore.collection("account")
+                                    accountRef.document(email).set(account)
                                 }
                             }
                         }else{
                             imgUrl = "https://firebasestorage.googleapis.com/v0/b/tp07nurseryapp.appspot.com/o/profile%2FIMG_20221108102257.png?alt=media&token=4cdc1a0a-fda7-4496-989b-a583ea332842"
                         }
-
-
-                        var email = binding.etEmail.text.toString()
-                        var pw = binding.etPw.text.toString()
-                        var name = binding.etName.text.toString()
-                        var birth = binding.date.text.toString()
-                        var nursery = binding.spinnerNursery.selectedItem.toString()
-                        var account = GAccount(email, pw, nursery, name, birth, imgUrl)
-
-
-                        val accountRef = firebaseFirestore.collection("account")
-                        accountRef.document("parent_$timestamp").set(account)
 
 
                         Toast.makeText(this, "회원가입 완료!", Toast.LENGTH_SHORT).show()
@@ -144,6 +144,10 @@ class RegisterParentActivity : AppCompatActivity() {
         
         binding.profile.setOnClickListener{ clickImg() }
         binding.date.setOnClickListener { showBottomSheetDialogCalendar() }
+
+
+
+        var data = mutableListOf<GNurseryDatas>()
 
 
         // 어린이집 API 기능
@@ -194,6 +198,10 @@ class RegisterParentActivity : AppCompatActivity() {
 
                     var eventType = xpp.eventType
 
+                    var nTitle:String
+                    var nAddr:String
+                    var nTel:String
+
                     while (eventType != XmlPullParser.END_DOCUMENT) {
                         when (eventType) {
                             XmlPullParser.START_DOCUMENT -> {
@@ -210,10 +218,21 @@ class RegisterParentActivity : AppCompatActivity() {
                                 if (tagName.equals("crname")) {
                                     xpp.next()
                                     nurseryList.add(xpp.text)
+                                    nTitle = xpp.text
+                                }else if(tagName.equals("craddr")){
+                                    xpp.next()
+                                    nAddr = xpp.text
+                                }else if(tagName.equals("crtelno")){
+                                    xpp.next()
+                                    nTel = xpp.text
                                 }
                             }
                             XmlPullParser.TEXT -> {}
-                            XmlPullParser.END_TAG -> {}
+                            XmlPullParser.END_TAG -> {
+                                if(xpp.name.equals("item")){
+                                    data.add(GNurseryDatas()) //TODO 선택한 어린이집 정보 companion 으로 저장하기..
+                                }
+                            }
                         }//when
                         eventType = xpp.next()
                     }//while}

@@ -33,8 +33,12 @@ class TripFragment:Fragment() {
         _binding = FragmentTripBinding.inflate(inflater, container, false)
         binding.btnSearch.setOnClickListener{
             binding.progressBar.visibility = View.VISIBLE
+
+            // 검색 후 키보드 숨김처리
             val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, 0)
+
+            // json 파싱 후 아이템들 리사이클러뷰에 배치
             loadTripData()
         }
         return binding.root
