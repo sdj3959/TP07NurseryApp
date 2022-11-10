@@ -48,6 +48,7 @@ class AccountActivity : AppCompatActivity() {
     }
     
     private fun clickLogin(){
+        binding.btnLogin.isEnabled = false
         val auth = FirebaseAuth.getInstance()
             auth.signInWithEmailAndPassword(
                 binding.etEmail.text.toString(),

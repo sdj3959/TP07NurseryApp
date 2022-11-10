@@ -16,7 +16,7 @@
             android:id="@+id/iv"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/two"
+            android:src="@drawable/four"
             android:padding="2dp"/>
         <TextView
             android:id="@+id/tv_title"

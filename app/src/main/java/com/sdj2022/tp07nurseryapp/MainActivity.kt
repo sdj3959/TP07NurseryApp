@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
@@ -41,7 +42,10 @@ class MainActivity : AppCompatActivity() {
             if (fragments[2] != null) tran.hide(fragments[2]!!)
 
             when (item.itemId) {
-                R.id.bnv_menu_home -> tran.show(fragments[0]!!)
+                R.id.bnv_menu_home -> {
+                    binding.toolbar.visibility = View.VISIBLE
+                    tran.show(fragments[0]!!)
+                }
 
                 R.id.bnv_menu_trip -> {
                     if(fragments[1] == null){
@@ -50,6 +54,7 @@ class MainActivity : AppCompatActivity() {
 
                     }
 
+                    binding.toolbar.visibility = View.GONE
                     tran.show(fragments[1]!!)
                 }
 
@@ -60,6 +65,7 @@ class MainActivity : AppCompatActivity() {
 
                     }
 
+                    binding.toolbar.visibility = View.VISIBLE
                     tran.show(fragments[2]!!)
                 }
             }

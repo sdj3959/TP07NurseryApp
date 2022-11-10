@@ -10,10 +10,9 @@ interface TripRetrofitService {
     @GET("/openapi/service/rest/convergence/conver8")
     fun getData(@Query("serviceKey") key:String,
                         @Query("numOfRows") numOfRows:Int,
-                        @Query("pageNo") pageNo:Int,
                         @Query("keyword") keyword:String,
                         @Header("Accept") form:String = "application/json"
-    ) : Call<TripItemResponse>
+    ) : Call<ApiResponse>
 
     @GET("/openapi/service/rest/convergence/conver8")
     fun getDataToString(@Query("serviceKey") key:String,

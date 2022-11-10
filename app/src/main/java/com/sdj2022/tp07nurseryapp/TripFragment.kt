@@ -1,10 +1,12 @@
 package com.sdj2022.tp07nurseryapp
 
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.sdj2022.tp07nurseryapp.databinding.FragmentTripBinding
@@ -14,6 +16,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import kotlin.random.Random
 
 class TripFragment:Fragment() {
 
@@ -28,7 +31,12 @@ class TripFragment:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentTripBinding.inflate(inflater, container, false)
-        loadTripData()
+        binding.btnSearch.setOnClickListener{
+            binding.progressBar.visibility = View.VISIBLE
+            val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, 0)
+            loadTripData()
+        }
         return binding.root
         //return FragmentTripBinding.inflate(inflater, container, false).root
         //return inflater.inflate(R.layout.fragment_trip, container, false)
@@ -47,25 +55,44 @@ class TripFragment:Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val retrofitService = retrofit.create(TripRetrofitService::class.java)
-        val call = retrofitService.getData(serviceKey,5,1,"어린이","application/json")
-        call.enqueue(object:Callback<TripItemResponse>{
-            override fun onResponse(call: Call<TripItemResponse>, response: Response<TripItemResponse>) {
-                val apiResponse = response.body()
+        // api 결과 페이지 랜덤값
+        //var rndInt = Random.nextInt(5000)+4
 
-//                apiResponse?.items?.let { binding.recycler.adapter =
-//                    activity?.let { activity -> TripAdapter(activity, it) }
+        val retrofitService = retrofit.create(TripRetrofitService::class.java)
+
+        val call = retrofitService.getData(serviceKey,5, binding.etSearch.text.toString(),"application/json")
+        call.enqueue(object:Callback<ApiResponse>{
+            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                var apiResponse:ApiResponse? = response.body()
+
+                // 중복된 아이템 삭제..
+//                var t = 5
+//                for(i in 1 until  t){
+//                    if(apiResponse?.response?.body?.items?.item?.get(i-1)?.title.equals(apiResponse?.response?.body?.items?.item?.get(i)?.title))
+//                    {
+//                        apiResponse?.response?.body?.items?.item?.removeAt(i-1)
+//                        t--
+//                    }
 //                }
 
-                apiResponse?.item?.let { binding.recycler.adapter = TripAdapter(activity!!, it) }
-                Toast.makeText(activity, "성공? ${apiResponse?.item?.size}", Toast.LENGTH_SHORT).show()
+                binding.progressBar.visibility = View.GONE
+
+                if(apiResponse?.response?.body?.items?.item?.size != 0) apiResponse?.response?.body?.items?.item?.let {
+                    binding.recycler.adapter = TripAdapter(activity!!, it)
+                }
+                else{
+
+                    binding.tvNoSearch.visibility = View.VISIBLE
+                }
+
+
+                //Toast.makeText(activity, "성공! ${apiResponse?.response?.body?.items?.item?.size}", Toast.LENGTH_SHORT).show()
 
                 //AlertDialog.Builder(activity).setMessage().show()
             }
 
-            override fun onFailure(call: Call<TripItemResponse>, t: Throwable) {
-                Toast.makeText(activity, "실패!", Toast.LENGTH_SHORT).show()
-                AlertDialog.Builder(activity).setMessage(t.message).show()
+            override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                Toast.makeText(activity, "잠시 후 다시 시도하세요.", Toast.LENGTH_SHORT).show()
             }
         })
         
