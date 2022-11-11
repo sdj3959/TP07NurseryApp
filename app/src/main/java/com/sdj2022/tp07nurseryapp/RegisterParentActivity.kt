@@ -19,6 +19,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -41,8 +42,6 @@ class RegisterParentActivity : AppCompatActivity() {
     lateinit var imgUri:Uri
     var imgUrl:String = "https://firebasestorage.googleapis.com/v0/b/tp07nurseryapp.appspot.com/o/profile%2FIMG_20221108102257.png?alt=media&token=4cdc1a0a-fda7-4496-989b-a583ea332842"
 
-    val firebaseFirestore = FirebaseFirestore.getInstance()
-    lateinit var auth:FirebaseAuth
 
     var nurseryList = mutableListOf<String>()
 
@@ -82,72 +81,70 @@ class RegisterParentActivity : AppCompatActivity() {
         imgUri = Uri.parse("drawable://" + resources.getResourcePackageName(R.drawable.user) + '/' + resources.getResourceTypeName(R.drawable.user) + '/' + resources.getResourceEntryName(R.drawable.user))
 
         binding.btnComplete.setOnClickListener {
-            var timestamp = SimpleDateFormat("yyyyMMddHHmmss").format(Date())
 
-            val firebaseStorage = FirebaseStorage.getInstance()
+            var dialog = ProgressDialog(this)
+            dialog.setMessage("회원가입 중...")
+            dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+            dialog.setCancelable(false)
+            dialog.show()
+
+            var timestamp = SimpleDateFormat("yyyyMMddHHmmss").format(Date())
             var fileName = "IMG_$timestamp.png"
 
 
+            val firebaseFirestore = FirebaseFirestore.getInstance()
+            val firebaseStorage = FirebaseStorage.getInstance()
+            var auth = FirebaseAuth.getInstance()
 
-            auth = FirebaseAuth.getInstance()
-
-            if(!binding.spinnerNursery.selectedItem.equals("어린이집을 선택하세요") && !binding.etEmail.text.toString().equals(null) && !binding.etPw.text.toString().equals(null) && binding.etPw.text.toString().length>=6 && binding.etPw2.text.toString().equals(binding.etPw.text.toString()) && !binding.etName.text.toString().equals(null)){
+            if(!binding.spinnerNursery.selectedItem.equals("어린이집을 선택하세요") && !binding.etEmail.text.toString().equals("") && !binding.etPw.text.toString().equals("") && binding.etPw.text.toString().length>=6 && binding.etPw2.text.toString().equals(binding.etPw.text.toString()) && !binding.etName.text.equals("") && binding.spinnerNursery.isVisible){
 
                 auth.createUserWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPw.text.toString()).addOnCompleteListener(this){
                     if(it.isSuccessful){
 
-                        var dialog = ProgressDialog(this)
-                        dialog.setMessage("회원가입 중...")
-                        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
-                        dialog.setCancelable(false)
-                        dialog.show()
-
                         val imgRef = firebaseStorage.reference.child("profile").child(fileName)
-                        if(imgUri!=null){
-                            imgRef.putFile(imgUri).addOnSuccessListener {
-                                imgRef.downloadUrl.addOnSuccessListener {
-                                    imgUrl = it.toString()
 
-                                    var email = binding.etEmail.text.toString()
-                                    var pw = binding.etPw.text.toString()
-                                    var name = binding.etName.text.toString()
-                                    var birth = binding.date.text.toString()
-                                    var nursery = binding.spinnerNursery.selectedItem.toString()
-                                    var account = GAccount(email, pw, nursery, name, birth, imgUrl,"0")
+                        //TODO putFile(uri) 에 addOnFailure 달아서 imgUrl 기본이미지 설정 후 아래 완료과정 복붙
+                        imgRef.putFile(imgUri).addOnSuccessListener {
+                            imgRef.downloadUrl.addOnSuccessListener {
+
+                                if(imgUri!=Uri.parse("drawable://" + resources.getResourcePackageName(R.drawable.user) + '/' + resources.getResourceTypeName(R.drawable.user) + '/' + resources.getResourceEntryName(R.drawable.user))) imgUrl = it.toString()
+                                else imgUrl = "https://firebasestorage.googleapis.com/v0/b/tp07nurseryapp.appspot.com/o/profile%2FIMG_20221108102257.png?alt=media&token=4cdc1a0a-fda7-4496-989b-a583ea332842"
+
+                                var email = binding.etEmail.text.toString()
+                                var pw = binding.etPw.text.toString()
+                                var name = binding.etName.text.toString()
+                                var birth = binding.date.text.toString()
+                                var nursery = binding.spinnerNursery.selectedItem.toString()
+
+                                var account = GAccount(email, pw, nursery, name, birth, imgUrl,"0")
 
 
-                                    val accountRef = firebaseFirestore.collection("account")
-                                    accountRef.document(email).set(account)
-                                }
+                                val accountRef = firebaseFirestore.collection("account")
+                                accountRef.document(email).set(account)
+
+                                Toast.makeText(this, "회원가입 완료!", Toast.LENGTH_SHORT).show()
+
+                                finish()
+                                var intent = Intent(this, AccountActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                startActivity(intent)
                             }
-                        }else{
-                            imgUrl = "https://firebasestorage.googleapis.com/v0/b/tp07nurseryapp.appspot.com/o/profile%2FIMG_20221108102257.png?alt=media&token=4cdc1a0a-fda7-4496-989b-a583ea332842"
                         }
 
-
-                        Toast.makeText(this, "회원가입 완료!", Toast.LENGTH_SHORT).show()
-
-                        finish()
-                        var intent = Intent(this, AccountActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        startActivity(intent)
-
                     }else{
+                        dialog.dismiss()
                         Toast.makeText(this, "이메일 중복 또는 형식이 다릅니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
 
             }else{
+                dialog.dismiss()
                 Toast.makeText(this, "회원정보를 다시 확인하세요.", Toast.LENGTH_SHORT).show()
             }
         }//btnComplete onClick
         
         binding.profile.setOnClickListener{ clickImg() }
         binding.date.setOnClickListener { showBottomSheetDialogCalendar() }
-
-
-
-        var data = mutableListOf<GNurseryDatas>()
 
 
         // 어린이집 API 기능
@@ -198,11 +195,8 @@ class RegisterParentActivity : AppCompatActivity() {
 
                     var eventType = xpp.eventType
 
-                    var nTitle:String
-                    var nAddr:String
-                    var nTel:String
-
                     while (eventType != XmlPullParser.END_DOCUMENT) {
+
                         when (eventType) {
                             XmlPullParser.START_DOCUMENT -> {
 //                                runOnUiThread() {
@@ -218,21 +212,10 @@ class RegisterParentActivity : AppCompatActivity() {
                                 if (tagName.equals("crname")) {
                                     xpp.next()
                                     nurseryList.add(xpp.text)
-                                    nTitle = xpp.text
-                                }else if(tagName.equals("craddr")){
-                                    xpp.next()
-                                    nAddr = xpp.text
-                                }else if(tagName.equals("crtelno")){
-                                    xpp.next()
-                                    nTel = xpp.text
                                 }
                             }
                             XmlPullParser.TEXT -> {}
-                            XmlPullParser.END_TAG -> {
-                                if(xpp.name.equals("item")){
-                                    data.add(GNurseryDatas()) //TODO 선택한 어린이집 정보 companion 으로 저장하기..
-                                }
-                            }
+                            XmlPullParser.END_TAG -> {}
                         }//when
                         eventType = xpp.next()
                     }//while}

@@ -57,38 +57,23 @@ class MainActivity : AppCompatActivity() {
         // 현재 로그인된 계정 정보 가져오기
         val user = FirebaseAuth.getInstance().currentUser
 
-        var userEmail:String
-        var userPassword:String
-        var userProfile:String
-        var userName:String
-        var userNursery:String
-        var userBirth:String
-        var userPosition:String
-
         var userData: HashMap<String, String?>
 
         db.collection("account").document(user?.email!!).get().addOnSuccessListener { document->
             if(document != null) {
 
-                userEmail = document.get("email").toString()
-                userPassword = document.get("pw").toString()
-                userProfile = document.get("imgUrl").toString()
-                userName = document.get("name").toString()
-                userNursery = document.get("nursery").toString()
-                userBirth = document.get("birth").toString()
-                userPosition = document.get("position").toString()
-
                 userData = hashMapOf<String, String?>(
-                    "email" to userEmail,
-                    "password" to userPassword,
-                    "profile" to userProfile,
-                    "name" to userName,
-                    "nursery" to userNursery,
-                    "birth" to userBirth,
-                    "position" to userPosition
+                    "email" to document.get("email").toString(),
+                    "password" to document.get("pw").toString(),
+                    "profile" to document.get("imgUrl").toString(),
+                    "name" to document.get("name").toString(),
+                    "nursery" to document.get("nursery").toString(),
+                    "birth" to document.get("birth").toString(),
+                    "position" to document.get("position").toString()
                 )
 
                 GUserData.userData = userData
+
 
                 // BottomNavigationView+Fragments
                 fragments.add(HomeFragment())
@@ -145,6 +130,7 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+
     }//onCreate
 
     override fun onBackPressed() {

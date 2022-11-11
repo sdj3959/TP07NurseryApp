@@ -3,14 +3,13 @@ package com.sdj2022.tp07nurseryapp
 class GNurseryData {
 
     companion object{
-        lateinit var nurseryData: HashMap<String, String>
+
+        var data = mutableListOf<NurseryData>()
     }
 }
 
-class GNurseryDatas constructor(title: String, addr:String, tel:String){
-    var nurseryDatas = hashMapOf<String, String>(
-        "title" to title,
-        "addr" to addr,
-        "tel" to tel
-    )
+class NurseryData {
+    var title:String = ""
+    var addr:String = ""
+    var tel:String = ""
 }
