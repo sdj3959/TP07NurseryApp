@@ -120,6 +120,27 @@ class RegisterDirectorActivity : AppCompatActivity() {
                                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 startActivity(intent)
                             }
+                        }.addOnFailureListener {
+                            imgUrl = "https://firebasestorage.googleapis.com/v0/b/tp07nurseryapp.appspot.com/o/profile%2FIMG_20221108102257.png?alt=media&token=4cdc1a0a-fda7-4496-989b-a583ea332842"
+
+                            var email = binding.etEmail.text.toString()
+                            var pw = binding.etPw.text.toString()
+                            var name = binding.etName.text.toString()
+                            var birth = null
+                            var nursery = binding.spinnerNursery.selectedItem.toString()
+
+                            var account = GAccount(email, pw, nursery, name, birth, imgUrl,"2")
+
+
+                            val accountRef = firebaseFirestore.collection("account")
+                            accountRef.document(email).set(account)
+
+                            Toast.makeText(this, "회원가입 완료!", Toast.LENGTH_SHORT).show()
+
+                            finish()
+                            var intent = Intent(this, AccountActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(intent)
                         }
 
                     }else{
