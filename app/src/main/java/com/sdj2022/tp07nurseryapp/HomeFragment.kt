@@ -27,12 +27,6 @@ class HomeFragment:Fragment() {
         return binding?.root
     }
 
-    companion object{
-
-
-
-    }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,11 +43,12 @@ class HomeFragment:Fragment() {
 
 
 
-        binding?.click?.setOnClickListener{ clickMenu(0) }
+        binding?.notice?.setOnClickListener{ clickMenu(0) }
         binding?.album?.setOnClickListener { clickMenu(1) }
-        binding?.note?.setOnClickListener { clickMenu(2) }
-        binding?.calendar?.setOnClickListener { clickMenu(3) }
-        binding?.foodmenu?.setOnClickListener { clickMenu(4) }
+        if(!GUserData.userData["position"].equals("0")) binding?.note?.setOnClickListener { clickMenu(2) }
+        else binding?.note?.setOnClickListener{ clickMenu(3) }
+        binding?.calendar?.setOnClickListener { clickMenu(4) }
+        binding?.foodmenu?.setOnClickListener { clickMenu(5) }
     }
 
     fun clickMenu(menus:Int){
@@ -61,8 +56,9 @@ class HomeFragment:Fragment() {
             0-> Intent(activity, NoticeActivity::class.java)
             1-> Intent(activity, AlbumActivity::class.java)
             2-> Intent(activity, NoteManagerActivity::class.java)
-            3-> Intent(activity, CalendarActivity::class.java)
-            4-> Intent(activity, FoodMenuActivity::class.java)
+            3-> Intent(activity, NoteParentActivity::class.java)
+            4-> Intent(activity, CalendarActivity::class.java)
+            5-> Intent(activity, FoodMenuActivity::class.java)
             else-> null
         }
         startActivity(intent)

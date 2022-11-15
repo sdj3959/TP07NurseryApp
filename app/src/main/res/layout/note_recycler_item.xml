@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:elevation="8dp"
     app:cardCornerRadius="8dp"
-    app:contentPadding="16dp">
+    app:contentPadding="8dp"
+    android:layout_margin="8dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,7 +19,18 @@
             android:layout_width="350dp"
             android:layout_height="350dp"
             android:src="@drawable/bg_one02"
-            android:layout_marginTop="10dp"/>
+            android:adjustViewBounds="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/tv_date"/>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/light_gray"
+            android:layout_below="@id/tv_date"
+            android:layout_marginTop="5dp"/>
 
 <!--        <TextView-->
 <!--            android:id="@+id/tv_name"-->
@@ -46,7 +58,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2022년 10월 10일"
-            android:layout_below="@id/tv_message"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"/>
 

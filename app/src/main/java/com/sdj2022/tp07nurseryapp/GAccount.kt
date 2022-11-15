@@ -6,7 +6,9 @@ data class GAccount constructor(var email:String,
                                   var name:String,
                                   var birth:String?,
                                   var imgUrl:String?,
-                                  var position:String)
+                                  var position:String,
+                                  var nurseryAddr:String,
+                                  var nurseryTel:String)
 {
 
 //    companion object{

@@ -87,7 +87,6 @@
         android:gravity="top"
         android:lines="15"
         android:maxLines="15"
-        android:maxLength="20"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="16dp"
@@ -113,6 +112,7 @@
         android:layout_marginLeft="16dp"/>
 
     <ImageView
+        android:id="@+id/add_pic"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/ic_baseline_add_a_photo_24"

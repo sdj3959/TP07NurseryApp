@@ -187,7 +187,8 @@
             android:layout_marginLeft="20dp"
             android:backgroundTint="@color/brand"
             android:padding="8dp"
-            android:ems="7"/>
+            android:ems="7"
+            android:maxLength="10"/>
 
         <LinearLayout
             android:layout_width="wrap_content"

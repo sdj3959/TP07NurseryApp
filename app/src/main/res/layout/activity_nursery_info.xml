@@ -36,10 +36,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="어린이집명"
+        android:textColor="#9E9E9E"
         android:textSize="20sp"
         android:layout_below="@id/appbar_layout"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#AEAEAE"
+        android:layout_below="@id/tv"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
 
     <TextView
         android:id="@+id/tv_nursery_name"
@@ -59,10 +68,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="주소"
+        android:textColor="#9E9E9E"
         android:textSize="20sp"
         android:layout_below="@id/tv_nursery_name"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#AEAEAE"
+        android:layout_below="@id/tv2"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
 
     <TextView
         android:id="@+id/tv_address"
@@ -82,10 +100,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="전화번호"
+        android:textColor="#9E9E9E"
         android:textSize="20sp"
         android:layout_below="@id/tv_address"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#AEAEAE"
+        android:layout_below="@id/tv3"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
 
     <TextView
         android:id="@+id/tv_tel"
@@ -101,11 +128,21 @@
         android:ellipsize="end"/>
 
     <TextView
+        android:id="@+id/tv4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="위치"
         android:textSize="30sp"
         android:layout_below="@id/tv_tel"
-        android:layout_margin="30dp"/>
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"/>
+
+    <RelativeLayout
+        android:id="@+id/map_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv4"
+        android:layout_margin="10dp"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

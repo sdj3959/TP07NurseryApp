@@ -2,6 +2,8 @@ package com.sdj2022.tp07nurseryapp
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
+import android.content.DialogInterface.OnClickListener
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,15 +33,24 @@ class TripFragment:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentTripBinding.inflate(inflater, container, false)
+
         binding.btnSearch.setOnClickListener{
-            binding.progressBar.visibility = View.VISIBLE
 
-            // 검색 후 키보드 숨김처리
-            val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, 0)
+            if(binding.etSearch.text.toString() != ""){
+                binding.progressBar.visibility = View.VISIBLE
 
-            // json 파싱 후 아이템들 리사이클러뷰에 배치
-            loadTripData()
+                // 검색 후 키보드 숨김처리
+                val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, 0)
+
+                // json 파싱 후 아이템들 리사이클러뷰에 배치
+                loadTripData()
+            }else{
+                AlertDialog.Builder(activity).setMessage("검색어를 입력하세요").setPositiveButton("확인", object : OnClickListener{
+                    override fun onClick(p0: DialogInterface?, p1: Int) {
+                    }
+                }).show()
+            }
         }
         return binding.root
         //return FragmentTripBinding.inflate(inflater, container, false).root

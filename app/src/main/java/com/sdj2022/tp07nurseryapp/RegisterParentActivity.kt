@@ -1,5 +1,6 @@
 package com.sdj2022.tp07nurseryapp
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.ContentResolver
 import android.content.Context
@@ -44,6 +45,14 @@ class RegisterParentActivity : AppCompatActivity() {
 
 
     var nurseryList = mutableListOf<String>()
+
+    var title = mutableListOf<String>()
+    var addr = mutableListOf<String>()
+    var tel = mutableListOf<String>()
+
+    lateinit var nurseryTitle:String
+    lateinit var nurseryAddr:String
+    lateinit var nurseryTel:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,7 +123,7 @@ class RegisterParentActivity : AppCompatActivity() {
                                 var birth = binding.date.text.toString()
                                 var nursery = binding.spinnerNursery.selectedItem.toString()
 
-                                var account = GAccount(email, pw, nursery, name, birth, imgUrl,"0")
+                                var account = GAccount(email, pw, nursery, name, birth, imgUrl,"0", nurseryAddr, nurseryTel)
 
 
                                 val accountRef = firebaseFirestore.collection("account")
@@ -136,7 +145,7 @@ class RegisterParentActivity : AppCompatActivity() {
                             var birth = binding.date.text.toString()
                             var nursery = binding.spinnerNursery.selectedItem.toString()
 
-                            var account = GAccount(email, pw, nursery, name, birth, imgUrl,"0")
+                            var account = GAccount(email, pw, nursery, name, birth, imgUrl,"0", nurseryAddr, nurseryTel)
 
 
                             val accountRef = firebaseFirestore.collection("account")
@@ -166,10 +175,15 @@ class RegisterParentActivity : AppCompatActivity() {
         binding.date.setOnClickListener { showBottomSheetDialogCalendar() }
 
 
-        // 어린이집 API 기능
+        // 전국어린이집정보 API 조회버튼
         binding.btnSearch.setOnClickListener {
 
             nurseryList.clear()
+            nurseryList.add("어린이집을 선택하세요")
+
+            title.clear()
+            addr.clear()
+            tel.clear()
 
             val arcode = hashMapOf<String, Int>(
                 "종로구" to 11110,
@@ -231,6 +245,13 @@ class RegisterParentActivity : AppCompatActivity() {
                                 if (tagName.equals("crname")) {
                                     xpp.next()
                                     nurseryList.add(xpp.text)
+                                    title.add(xpp.text)
+                                }else if(tagName.equals("craddr")){
+                                    xpp.next()
+                                    addr.add(xpp.text)
+                                }else if(tagName.equals("crtel")){
+                                    xpp.next()
+                                    tel.add(xpp.text)
                                 }
                             }
                             XmlPullParser.TEXT -> {}
@@ -239,9 +260,25 @@ class RegisterParentActivity : AppCompatActivity() {
                         eventType = xpp.next()
                     }//while}
 
+                    binding.spinnerNursery.onItemSelectedListener = object : OnItemSelectedListener{
+                        override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                            if (p2>0){
+
+                                //AlertDialog.Builder(this@RegisterParentActivity).setMessage("${title[p2-1]}, ${addr[p2-1]}, ${tel[p2-1]}").show()
+                                nurseryTitle = title[p2-1]
+                                nurseryAddr = addr[p2-1]
+                                nurseryTel = tel[p2-1]
+                            }
+
+                        }
+
+                        override fun onNothingSelected(p0: AdapterView<*>?) {
+                        }
+                    }
+
                     runOnUiThread {
                         binding.spinnerNursery.visibility = View.VISIBLE
-                        binding.spinnerNursery.prompt = "어린이집을 선택하세요"
+                        binding.spinnerNursery.prompt = "${binding.spinnerGu.selectedItem} 어린이집 목록"
                         binding.spinnerNursery.adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item, nurseryList)
                     }
 

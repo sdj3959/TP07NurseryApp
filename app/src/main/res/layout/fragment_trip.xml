@@ -61,6 +61,7 @@
         android:layout_margin="8dp"
         android:layout_toLeftOf="@id/btn_search"
         android:hint="키워드 검색"
+        android:inputType="text"
         android:fontFamily="@font/bmjua"
         android:paddingLeft="16dp"
         android:background="@drawable/bg_edit2"/>
@@ -82,9 +83,8 @@
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:layout_below="@id/et_search"/>
+        android:layout_below="@id/et_search"
+        android:background="#EAEAEA"/>
 
     <ProgressBar
         android:id="@+id/progress_bar"

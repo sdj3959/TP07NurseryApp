@@ -9,6 +9,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
@@ -35,6 +36,14 @@ class RegisterDirectorActivity : AppCompatActivity() {
     var imgUrl:String = "https://firebasestorage.googleapis.com/v0/b/tp07nurseryapp.appspot.com/o/profile%2FIMG_20221108102257.png?alt=media&token=4cdc1a0a-fda7-4496-989b-a583ea332842"
 
     var nurseryList = mutableListOf<String>()
+
+    var title = mutableListOf<String>()
+    var addr = mutableListOf<String>()
+    var tel = mutableListOf<String>()
+
+    lateinit var nurseryTitle:String
+    lateinit var nurseryAddr:String
+    lateinit var nurseryTel:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,7 +94,7 @@ class RegisterDirectorActivity : AppCompatActivity() {
 
             var fileName = "IMG_$timestamp.png"
 
-            if(!binding.etEmail.text.toString().equals("") && !binding.etPw.text.toString().equals("") && binding.etPw.text.toString().length>=6 && binding.etPw2.text.toString().equals(binding.etPw.text.toString()) && !binding.etName.text.toString().equals("") && binding.spinnerNursery.isVisible){
+            if(!binding.spinnerNursery.selectedItem.equals("어린이집을 선택하세요") && !binding.etEmail.text.toString().equals("") && !binding.etPw.text.toString().equals("") && binding.etPw.text.toString().length>=6 && binding.etPw2.text.toString().equals(binding.etPw.text.toString()) && !binding.etName.text.toString().equals("") && binding.spinnerNursery.isVisible){
 
 
 
@@ -107,7 +116,7 @@ class RegisterDirectorActivity : AppCompatActivity() {
                                 var birth = null
                                 var nursery = binding.spinnerNursery.selectedItem.toString()
 
-                                var account = GAccount(email, pw, nursery, name, birth, imgUrl,"2")
+                                var account = GAccount(email, pw, nursery, name, birth, imgUrl,"2", nurseryAddr, nurseryTel)
 
 
                                 val accountRef = firebaseFirestore.collection("account")
@@ -129,7 +138,7 @@ class RegisterDirectorActivity : AppCompatActivity() {
                             var birth = null
                             var nursery = binding.spinnerNursery.selectedItem.toString()
 
-                            var account = GAccount(email, pw, nursery, name, birth, imgUrl,"2")
+                            var account = GAccount(email, pw, nursery, name, birth, imgUrl,"2", nurseryAddr, nurseryTel)
 
 
                             val accountRef = firebaseFirestore.collection("account")
@@ -158,10 +167,15 @@ class RegisterDirectorActivity : AppCompatActivity() {
         binding.profile.setOnClickListener{ clickImg() }
 
 
-        // 어린이집 API 기능
+        // 전국어린이집정보 API 조회버튼
         binding.btnSearch.setOnClickListener {
 
             nurseryList.clear()
+            nurseryList.add("어린이집을 선택하세요")
+
+            title.clear()
+            addr.clear()
+            tel.clear()
 
             val arcode = hashMapOf<String, Int>(
                 "종로구" to 11110,
@@ -207,7 +221,6 @@ class RegisterDirectorActivity : AppCompatActivity() {
                     var eventType = xpp.eventType
 
                     while (eventType != XmlPullParser.END_DOCUMENT) {
-                        var data = NurseryData()
                         when (eventType) {
                             XmlPullParser.START_DOCUMENT -> {
 //                                runOnUiThread() {
@@ -222,19 +235,42 @@ class RegisterDirectorActivity : AppCompatActivity() {
                                 var tagName = xpp.name
                                 if (tagName.equals("crname")) {
                                     xpp.next()
-                                    data.title = xpp.text
                                     nurseryList.add(xpp.text)
+                                    title.add(xpp.text)
+                                }else if(tagName.equals("craddr")){
+                                    xpp.next()
+                                    addr.add(xpp.text)
+                                }else if(tagName.equals("crtel")){
+                                    xpp.next()
+                                    tel.add(xpp.text)
                                 }
                             }
                             XmlPullParser.TEXT -> {}
                             XmlPullParser.END_TAG -> {}
                         }//when
                         eventType = xpp.next()
-                    }//while}
+                    }//while
+
+                    binding.spinnerNursery.onItemSelectedListener = object :
+                        AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                            if (p2>0){
+
+                                //AlertDialog.Builder(this@RegisterParentActivity).setMessage("${title[p2-1]}, ${addr[p2-1]}, ${tel[p2-1]}").show()
+                                nurseryTitle = title[p2-1]
+                                nurseryAddr = addr[p2-1]
+                                nurseryTel = tel[p2-1]
+                            }
+
+                        }
+
+                        override fun onNothingSelected(p0: AdapterView<*>?) {
+                        }
+                    }
 
                     runOnUiThread {
                         binding.spinnerNursery.visibility = View.VISIBLE
-                        binding.spinnerNursery.prompt = "어린이집을 선택하세요"
+                        binding.spinnerNursery.prompt = "${binding.spinnerGu.selectedItem} 어린이집 목록"
                         binding.spinnerNursery.adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item, nurseryList)
                     }
 

@@ -1,8 +1,11 @@
 package com.sdj2022.tp07nurseryapp
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
@@ -15,10 +18,15 @@ import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.kakao.util.maps.helper.Utility
 import com.sdj2022.tp07nurseryapp.databinding.ActivityMainBinding
 import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
+
+    //TODO 메뉴 별 닷홈 MySQL 이용하여 데이터관리
+    //TODO 내 정보 변경하기 추가
+    //TODO 문의하기 기능 추가
 
     val db = FirebaseFirestore.getInstance()
 
@@ -30,6 +38,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        // 퍼미션 요청..
+        val permission = arrayOf(
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_MEDIA_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+
+        if(checkSelfPermission(permission[0]) == PackageManager.PERMISSION_DENIED || checkSelfPermission(permission[2]) == PackageManager.PERMISSION_DENIED){
+            requestPermissions(permission, 100)
+        }
+
+//        var l = Utility.getKeyHash(this)
+//        Log.i("MY", l)
 
         // DrawerNavigation
         val drawerToggle = ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.drawer_open, R.string.drawer_close)
@@ -69,7 +92,9 @@ class MainActivity : AppCompatActivity() {
                     "name" to document.get("name").toString(),
                     "nursery" to document.get("nursery").toString(),
                     "birth" to document.get("birth").toString(),
-                    "position" to document.get("position").toString()
+                    "position" to document.get("position").toString(),
+                    "nurseryAddr" to document.get("nurseryAddr").toString(),
+                    "nurseryTel" to document.get("nurseryTel").toString()
                 )
 
                 GUserData.userData = userData
