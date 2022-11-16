@@ -27,12 +27,14 @@ class NoticeAdapter constructor(val context: Context, var items:MutableList<Noti
         Glide.with(context).load(item.profile).into(holder.binding.civProfile)
         holder.binding.tvName.text = item.name
         holder.binding.tvDate.text = item.date
-        Glide.with(context).load(item.profile).into(holder.binding.iv)
+        var imgUrl = "http://dj2022.dothome.co.kr/NurseryApp/"+item.img
+        Glide.with(context).load(imgUrl).into(holder.binding.iv)
         holder.binding.tvTitle.text = item.title
         holder.binding.tvMessage.text = item.msg
 
         holder.binding.iv.setOnClickListener{
             var intent = Intent(context, PhotoActivity::class.java)
+            intent.putExtra("img",imgUrl)
             context.startActivity(intent)
         }
     }

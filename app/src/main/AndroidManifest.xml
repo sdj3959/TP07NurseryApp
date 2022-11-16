@@ -41,7 +41,8 @@
             android:exported="false" />
         <activity
             android:name=".PhotoActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/PhotoActivity"/>
         <activity
             android:name=".NurseryInfoActivity"
             android:exported="false" />

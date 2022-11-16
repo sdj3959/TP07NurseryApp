@@ -22,7 +22,7 @@ class NoteManagerActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_new_brand_24)
 
-        binding.tvDate.text = SimpleDateFormat("yyyy년 MM월 dd일").format(Date())
+        binding.tvDate.text = "${GUserData.userData["nursery"]} - "+SimpleDateFormat("yyyy년 MM월 dd일").format(Date())
 
         binding.fab.setOnClickListener{startActivity(Intent(this, AddNoteActivity::class.java))}
 

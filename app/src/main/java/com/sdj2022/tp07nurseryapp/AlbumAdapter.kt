@@ -22,12 +22,14 @@ class AlbumAdapter constructor(val context: Context, var items:MutableList<Album
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         var item = items[position]
-        Glide.with(context).load(item.image).into(holder.binding.iv)
         holder.binding.tvMessage.text = item.msg
+        var imgUrl = "http://dj2022.dothome.co.kr/NurseryApp/"+item.img
+        Glide.with(context).load(imgUrl).into(holder.binding.iv)
         holder.binding.tvDate.text = item.date
 
         holder.binding.iv.setOnClickListener{
             var intent = Intent(context, PhotoActivity::class.java)
+            intent.putExtra("img",imgUrl)
             context.startActivity(intent)
         }
     }

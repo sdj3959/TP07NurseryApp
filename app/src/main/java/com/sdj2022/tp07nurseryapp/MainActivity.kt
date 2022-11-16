@@ -24,10 +24,6 @@ import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
-    //TODO 메뉴 별 닷홈 MySQL 이용하여 데이터관리
-    //TODO 내 정보 변경하기 추가
-    //TODO 문의하기 기능 추가
-
     val db = FirebaseFirestore.getInstance()
 
     var fragments = mutableListOf<Fragment?>()

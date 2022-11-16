@@ -27,6 +27,12 @@
         <item name="colorControlNormal">@color/white</item>
     </style>
 
+<!--    PhotoActivity 상태표시줄 어둡게 바꾸기 테마 따로 설정 -->
+    <style name="PhotoActivity" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
+    </style>
+
+<!--    BottomSheetDialog 테마 -->
     <style name="MyBottomSheetDialogTheme" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
 
         <item name="bottomSheetStyle">@style/MyBottomSheetDialogStyle</item>
@@ -40,12 +46,15 @@
 
     </style>
 
+<!--    BottomSheet 모양 -->
     <style name="MyRoundedCornerBottomSheetShape">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">16dp</item>
         <item name="cornerSizeTopRight">16dp</item>
     </style>
 
+
+<!--    폰트 한번에 설정중 하나.. -->
     <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/bmjua</item>
     </style>

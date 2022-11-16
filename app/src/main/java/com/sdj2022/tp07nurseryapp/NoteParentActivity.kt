@@ -22,7 +22,7 @@ class NoteParentActivity : AppCompatActivity() {
 
         binding.tvName.text = "${GUserData.userData["name"]} 어린이"
 
-        binding.tvDate.text = SimpleDateFormat("yyyy년 MM월 dd일").format(Date())
+        binding.tvDate.text = "${GUserData.userData["nursery"]} - "+SimpleDateFormat("yyyy년 MM월 dd일").format(Date())
 
 
         var items = mutableListOf<NoteItem>()
