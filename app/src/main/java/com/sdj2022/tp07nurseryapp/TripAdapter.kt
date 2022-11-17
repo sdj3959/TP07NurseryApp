@@ -2,6 +2,7 @@ package com.sdj2022.tp07nurseryapp
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -67,13 +68,17 @@ class TripAdapter constructor(var context:Context, var items:MutableList<TripIte
             holder.address.text = items[position].spatial
         } else {
             holder.address.text = items[position].url
-            holder.tvMap.visibility = View.GONE
+            //holder.tvMap.visibility = View.GONE
+            holder.tvMap.setTextColor(context.getColor(R.color.gray))
+            holder.tvMap.text = "지도 정보가 없어요"
         }
 
         holder.binding.tvMap.setOnClickListener {
-            var intent = Intent(context, MapActivity::class.java)
-            intent.putExtra("addr", items[position].spatial)
-            context.startActivity(intent)
+            if(holder.tvMap.text.equals("누르면 지도가 보여요!")) {
+                var intent = Intent(context, MapActivity::class.java)
+                intent.putExtra("addr", items[position].spatial)
+                context.startActivity(intent)
+            }
         }
     }
 

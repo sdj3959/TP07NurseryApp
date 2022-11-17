@@ -21,54 +21,79 @@
 <!--            android:layout_gravity="center"/>-->
     </androidx.appcompat.widget.Toolbar>
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
         android:padding="16dp">
 
         <TextView
             android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" 학부모 회원가입"
+            android:text="학부모 회원가입"
             android:textColor="@color/brand"
-            android:textSize="40sp"
-            android:layout_centerHorizontal="true"/>
+            android:textSize="40sp"/>
 
         <TextView
             android:id="@+id/tv_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="이메일"
-            android:layout_below="@id/tv"
             android:textSize="18sp"
-            android:layout_alignRight="@id/tv_pw2"
+            android:layout_below="@id/tv"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="40dp"/>
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:id="@+id/btn_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="중복확인"
+            android:textSize="13sp"
+            android:fontFamily="@font/bmjua"
+            android:layout_below="@id/tv_id"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/et_email"
+            android:backgroundTint="@color/etc"/>
+
+        <ImageView
+            android:id="@+id/iv_email"
+            android:src="@drawable/ic_baseline_check_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/et_email"
+            android:layout_alignBottom="@id/et_email"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/et_email"
+            android:visibility="invisible"/>
 
         <TextView
             android:id="@+id/tv_pw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="비밀번호"
-            android:layout_below="@id/tv_id"
-            android:layout_alignRight="@id/tv_pw2"
+            android:layout_below="@id/et_email"
             android:textSize="18sp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="20dp"/>
 
         <EditText
             android:id="@+id/et_email"
-            android:layout_width="220dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="example@example.com"
             android:inputType="textEmailAddress"
             android:textSize="18sp"
-            android:layout_alignLeft="@id/et_pw2"
-            android:layout_below="@id/tv"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@color/brand"
+            android:background="@drawable/bg_edit"
+            android:layout_below="@id/tv_id"
+            android:layout_marginTop="10dp"
             android:padding="8dp"
             android:ems="12"/>
 
@@ -85,16 +110,16 @@
 
         <EditText
             android:id="@+id/et_pw"
-            android:layout_width="220dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="비밀번호 입력 (6자 이상)"
             android:inputType="textPassword"
             android:textSize="18sp"
             android:layout_toRightOf="@id/tv_id"
-            android:layout_below="@id/et_email"
+            android:layout_below="@id/tv_pw"
             android:layout_marginTop="10dp"
             android:layout_alignLeft="@id/et_email"
-            android:backgroundTint="@color/brand"
+            android:background="@drawable/bg_edit"
             android:padding="8dp"
             android:ems="12"/>
 
@@ -103,22 +128,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="비밀번호 확인"
-            android:layout_below="@id/tv_pw"
+            android:layout_below="@id/et_pw"
             android:textSize="18sp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="20dp"/>
 
         <EditText
             android:id="@+id/et_pw2"
-            android:layout_width="220dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="비밀번호 다시 입력"
             android:inputType="textPassword"
             android:textSize="18sp"
-            android:layout_toRightOf="@id/tv_pw2"
-            android:layout_below="@id/et_pw"
+            android:layout_below="@id/tv_pw2"
             android:layout_marginTop="10dp"
-            android:backgroundTint="@color/brand"
+            android:background="@drawable/bg_edit"
             android:padding="8dp"
             android:ems="12"/>
 
@@ -129,8 +153,8 @@
             android:text="비밀번호가 다릅니다."
             android:textSize="10sp"
             android:textColor="#FFFF0000"
-            android:layout_below="@id/et_pw2"
-            android:layout_alignLeft="@id/et_pw2"
+            android:layout_alignBottom="@id/et_pw2"
+            android:layout_toRightOf="@id/et_pw2"
             android:layout_marginLeft="10dp"
             android:visibility="invisible"/>
         <TextView
@@ -140,8 +164,8 @@
             android:text="비밀번호가 일치합니다."
             android:textSize="10sp"
             android:textColor="#FF00FF00"
-            android:layout_below="@id/et_pw2"
-            android:layout_alignLeft="@id/et_pw2"
+            android:layout_alignBottom="@id/et_pw2"
+            android:layout_toRightOf="@id/et_pw2"
             android:layout_marginLeft="10dp"
             android:visibility="invisible"/>
 
@@ -152,8 +176,8 @@
             android:text="  우리 아이 정보"
             android:textColor="@color/gray"
             android:textSize="25sp"
-            android:layout_below="@id/tv_pw2"
-            android:layout_marginTop="50dp"/>
+            android:layout_below="@id/et_pw2"
+            android:layout_marginTop="25dp"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile"
@@ -162,6 +186,14 @@
             android:layout_below="@id/tv2"
             android:layout_marginTop="10dp"
             android:src="@drawable/user"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_add_a_photo_24"
+            app:tint="@color/black"
+            android:layout_alignBottom="@id/profile"
+            android:layout_alignRight="@id/profile"/>
 
         <TextView
             android:id="@+id/tv_name"
@@ -185,7 +217,7 @@
             android:layout_below="@id/tv2"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
-            android:backgroundTint="@color/brand"
+            android:background="@drawable/bg_edit"
             android:padding="8dp"
             android:ems="7"
             android:maxLength="10"/>
@@ -220,8 +252,9 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linear"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/profile"
             android:layout_marginTop="16dp"
             android:orientation="vertical">
@@ -287,10 +320,11 @@
             android:text="회원가입 완료"
             android:fontFamily="@font/bmjua"
             android:backgroundTint="@color/brand"
+            android:layout_below="@id/linear"
             android:layout_alignParentBottom="true"/>
 
     </RelativeLayout>
-
+    </androidx.core.widget.NestedScrollView>
 
 
 </RelativeLayout>

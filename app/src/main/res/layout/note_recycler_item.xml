@@ -12,11 +12,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To "
+            android:textSize="25sp"
+            android:textColor="@color/brand"
+            android:layout_above="@id/line"/>
 
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="홍길동 학부모님"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_above="@id/line"
+            android:layout_toRightOf="@id/tv"/>
 
         <ImageView
             android:id="@+id/iv"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/bg_one02"
             android:adjustViewBounds="true"
@@ -59,7 +76,8 @@
             android:layout_height="wrap_content"
             android:text="2022년 10월 10일"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_alignParentRight="true"/>
 
     </RelativeLayout>
 

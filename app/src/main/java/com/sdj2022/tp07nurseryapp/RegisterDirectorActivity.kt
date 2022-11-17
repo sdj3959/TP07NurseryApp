@@ -1,6 +1,8 @@
 package com.sdj2022.tp07nurseryapp
 
 import android.app.ProgressDialog
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +11,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -45,6 +48,10 @@ class RegisterDirectorActivity : AppCompatActivity() {
     lateinit var nurseryAddr:String
     lateinit var nurseryTel:String
 
+    val firebaseFirestore = FirebaseFirestore.getInstance()
+    val firebaseStorage = FirebaseStorage.getInstance()
+    val auth = FirebaseAuth.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -53,6 +60,41 @@ class RegisterDirectorActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_new_brand_24)
+
+        binding.btnEmail.setOnClickListener {
+
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+
+            if (binding.etEmail.text.length<6 || !binding.etEmail.text.contains("@")) {
+                Toast.makeText(this, "이메일 형식을 맞춰주세요", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            firebaseFirestore.collection("account").whereEqualTo("email", binding.etEmail.text.toString()).get().addOnSuccessListener {
+                if(it.documents.size == 0) {
+                    Toast.makeText(this, "중복된 이메일이 없습니다", Toast.LENGTH_SHORT).show()
+                    binding.btnEmail.visibility = View.INVISIBLE
+                    binding.ivEmail.visibility = View.VISIBLE
+                }
+                else Toast.makeText(this, "중복된 이메일이 존재합니다", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.etEmail.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                if(binding.btnEmail.visibility == View.INVISIBLE && binding.ivEmail.visibility == View.VISIBLE){
+                    binding.btnEmail.visibility = View.VISIBLE
+                    binding.ivEmail.visibility = View.INVISIBLE
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+        })
 
 
         binding.etPw2.addTextChangedListener(object : TextWatcher {
@@ -80,15 +122,15 @@ class RegisterDirectorActivity : AppCompatActivity() {
 
         binding.btnComplete.setOnClickListener {
 
+            binding.btnComplete.isEnabled = false
+
             var dialog = ProgressDialog(this)
             dialog.setMessage("회원가입 중...")
             dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
             dialog.setCancelable(false)
             dialog.show()
 
-            val firebaseFirestore = FirebaseFirestore.getInstance()
-            val firebaseStorage = FirebaseStorage.getInstance()
-            val auth = FirebaseAuth.getInstance()
+
 
             var timestamp = SimpleDateFormat("yyyyMMddHHmmss").format(Date())
 
@@ -155,12 +197,14 @@ class RegisterDirectorActivity : AppCompatActivity() {
                     }else{
                         dialog.dismiss()
                         Toast.makeText(this, "이메일 중복 또는 형식이 다릅니다.", Toast.LENGTH_SHORT).show()
+                        binding.btnComplete.isEnabled = true
                     }
                 }
 
             }else{
                 dialog.dismiss()
                 Toast.makeText(this, "회원정보를 다시 확인하세요.", Toast.LENGTH_SHORT).show()
+                binding.btnComplete.isEnabled = true
             }
         }//btnComplete onClick
 
@@ -294,5 +338,12 @@ class RegisterDirectorActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return super.onSupportNavigateUp()
+    }
+
+    override fun onBackPressed() {
+        androidx.appcompat.app.AlertDialog.Builder(this).setTitle("유아노트").setMessage("회원가입을 그만두시겠습니까?").setPositiveButton("확인",
+            DialogInterface.OnClickListener { dialogInterface, i ->
+                finish()
+            }).setNegativeButton("취소", DialogInterface.OnClickListener { dialogInterface, i ->  }).show()
     }
 }

@@ -1,5 +1,6 @@
 package com.sdj2022.tp07nurseryapp
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -42,6 +43,9 @@ class AddAlbumActivity : AppCompatActivity() {
     }
 
     fun clickComplete(){
+
+        binding.btnComplete.isEnabled = false
+
         var msg = binding.etMessage.text.toString()
         var nursery = GUserData.userData["nursery"]
 
@@ -71,6 +75,7 @@ class AddAlbumActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<String>, t: Throwable) {
                 Toast.makeText(this@AddAlbumActivity, "등록에 실패했습니다. 잠시후 다시 시도 해주세요", Toast.LENGTH_SHORT).show()
+                binding.btnComplete.isEnabled = true
             }
         })
     }
@@ -89,6 +94,13 @@ class AddAlbumActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return super.onSupportNavigateUp()
+    }
+
+    override fun onBackPressed() {
+        androidx.appcompat.app.AlertDialog.Builder(this).setTitle("유아노트").setMessage("작성을 취소하시겠습니까?").setPositiveButton("확인",
+            DialogInterface.OnClickListener { dialogInterface, i ->
+                finish()
+            }).setNegativeButton("취소", DialogInterface.OnClickListener { dialogInterface, i ->  }).show()
     }
 
     //Uri -- > 절대경로로 바꿔서 리턴시켜주는 메소드

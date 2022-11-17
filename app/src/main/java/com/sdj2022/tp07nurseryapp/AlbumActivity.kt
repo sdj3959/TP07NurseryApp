@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.snackbar.Snackbar
 import com.sdj2022.tp07nurseryapp.databinding.ActivityAlbumBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -49,6 +50,7 @@ class AlbumActivity : AppCompatActivity() {
         binding.swipeRefreshLayout.setOnRefreshListener {
             loadData()
             binding.swipeRefreshLayout.isRefreshing = false
+            Snackbar.make(binding.root,"새로고침 되었습니다", Snackbar.LENGTH_SHORT).show()
         }
     }
 

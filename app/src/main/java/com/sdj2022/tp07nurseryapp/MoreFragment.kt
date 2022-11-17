@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.sdj2022.tp07nurseryapp.databinding.FragmentHomeBinding
 import com.sdj2022.tp07nurseryapp.databinding.FragmentMoreBinding
@@ -27,6 +28,11 @@ class MoreFragment:Fragment() {
 
         binding?.ivInfo?.setOnClickListener{ startActivity(Intent(activity, NurseryInfoActivity::class.java))}
         binding?.ivLogout?.setOnClickListener {
+            val pref = activity?.getSharedPreferences("account", AppCompatActivity.MODE_PRIVATE)
+            val editor = pref?.edit()
+            editor?.putString("auto","0")
+            editor?.commit()
+
             startActivity(Intent(activity, AccountActivity::class.java))
             activity?.finish()
         }

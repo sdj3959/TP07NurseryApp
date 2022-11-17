@@ -24,6 +24,15 @@ class AccountActivity : AppCompatActivity() {
 
         binding.btnLogin.isEnabled = false
 
+        binding.tvSave.setOnClickListener {
+            if (binding.cbSave.isChecked) binding.cbSave.isChecked = false
+            else binding.cbSave.isChecked = true
+        }
+        binding.tvAuto.setOnClickListener {
+            if (binding.cbAuto.isChecked) binding.cbAuto.isChecked = false
+            else binding.cbAuto.isChecked = true
+        }
+
         loadData() //이메일 저장정보 불러오기
 
         binding.etEmail.addTextChangedListener {
@@ -62,10 +71,32 @@ class AccountActivity : AppCompatActivity() {
                     dialog.setCancelable(false)
                     dialog.show()
 
-                    val pref = getSharedPreferences("account", MODE_PRIVATE)
-                    val editor = pref.edit()
-                    editor.putString("email", binding.etEmail.text.toString())
-                    editor.commit()
+                    // 계정기억과 자동로그인 기능(SharedPreferences)
+                    if(binding.cbSave.isChecked && !binding.cbAuto.isChecked){
+                        val pref = getSharedPreferences("account", MODE_PRIVATE)
+                        val editor = pref.edit()
+                        editor.putString("email", binding.etEmail.text.toString())
+                        editor.putString("save","1")
+                        editor.putString("auto","0")
+                        editor.commit()
+                    }else if(binding.cbAuto.isChecked && !binding.cbSave.isChecked){
+                        val pref = getSharedPreferences("account", MODE_PRIVATE)
+                        val editor = pref.edit()
+                        editor.putString("email", binding.etEmail.text.toString())
+                        editor.putString("pw", binding.etPw.text.toString())
+                        editor.putString("save", "0")
+                        editor.putString("auto", "1")
+                        editor.commit()
+                    }else if(binding.cbAuto.isChecked && binding.cbSave.isChecked){
+                        val pref = getSharedPreferences("account", MODE_PRIVATE)
+                        val editor = pref.edit()
+                        editor.putString("email", binding.etEmail.text.toString())
+                        editor.putString("pw", binding.etPw.text.toString())
+                        editor.putString("save", "1")
+                        editor.putString("auto", "1")
+                        editor.commit()
+                    }
+
 
                     dialog.dismiss()
 
@@ -78,6 +109,8 @@ class AccountActivity : AppCompatActivity() {
 
     private fun loadData(){
         val pref = getSharedPreferences("account", MODE_PRIVATE)
-        binding.etEmail.setText(pref.getString("email", null))
+        if(pref.getString("save", null).equals("1")) binding.etEmail.setText(pref.getString("email", null))
+        if(pref.getString("save", null).equals("1")) binding.cbSave.isChecked = true
+        if(pref.getString("auto", null).equals("1")) binding.cbAuto.isChecked = true
     }
 }

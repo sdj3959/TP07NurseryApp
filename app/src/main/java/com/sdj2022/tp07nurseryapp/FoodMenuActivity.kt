@@ -11,6 +11,7 @@ import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.loader.content.CursorLoader
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.sdj2022.tp07nurseryapp.databinding.ActivityFoodMenuBinding
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -83,7 +84,8 @@ class FoodMenuActivity : AppCompatActivity() {
 
         retrofitService.foodmenuData(dataPart, filePart).enqueue(object : Callback<String>{
             override fun onResponse(call: Call<String>, response: Response<String>) {
-                Toast.makeText(this@FoodMenuActivity, response.body(), Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this@FoodMenuActivity, response.body(), Toast.LENGTH_SHORT).show()
+                Snackbar.make(binding.root,response.body().toString(), Snackbar.LENGTH_SHORT).show()
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
@@ -102,6 +104,7 @@ class FoodMenuActivity : AppCompatActivity() {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 imgUrl = "http://dj2022.dothome.co.kr/NurseryApp/"+response.body()
                 Glide.with(this@FoodMenuActivity).load(imgUrl).into(binding.iv)
+                Snackbar.make(binding.root,"식단표를 불러왔습니다", Snackbar.LENGTH_SHORT).show()
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {

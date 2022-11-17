@@ -16,6 +16,7 @@ class HomeFragment:Fragment() {
 
     var binding:FragmentHomeBinding? = null
 
+    val nurseryEmployee = mutableListOf<NurseryPagerItem>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +41,22 @@ class HomeFragment:Fragment() {
         else binding?.tvName?.text = "${GUserData.userData["name"]} 원장"
 
 
+        val firebaseFirestore = FirebaseFirestore.getInstance()
+        firebaseFirestore.collection("account").whereNotEqualTo("position", "0").get().addOnSuccessListener {
+            for (document in it.documents){
+                if(document["nursery"] == GUserData.userData["nursery"]){
+                    var profile = document["imgUrl"].toString()
+                    var name = if(document["position"]?.equals("1")!!) document["name"].toString()+" 교사"
+                                else document["name"].toString()+" 원장님"
+
+                    if(name.contains("원장님")){
+                        nurseryEmployee.add(0, NurseryPagerItem(profile,name))
+                    }else nurseryEmployee.add(NurseryPagerItem(profile,name))
+                }
+            }
+            binding?.pager?.adapter = NurseryPagerAdapter(view.context, nurseryEmployee)
+            binding?.dotsIndicator?.attachTo(binding?.pager!!)
+        }
 
 
 

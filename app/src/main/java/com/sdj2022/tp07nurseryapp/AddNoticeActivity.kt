@@ -1,5 +1,6 @@
 package com.sdj2022.tp07nurseryapp
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -10,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.loader.content.CursorLoader
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.sdj2022.tp07nurseryapp.databinding.ActivityAddNoticeBinding
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -42,6 +44,9 @@ class AddNoticeActivity : AppCompatActivity() {
     }
 
     fun clickComplete(){
+
+        binding.btnComplete.isEnabled = false
+
         var title = binding.etTitle.text.toString()
         var msg = binding.etMessage.text.toString()
         var nursery = GUserData.userData["nursery"]
@@ -76,6 +81,7 @@ class AddNoticeActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<String>, t: Throwable) {
                 Toast.makeText(this@AddNoticeActivity, "등록에 실패했습니다. 잠시후 다시 시도 해주세요", Toast.LENGTH_SHORT).show()
+                binding.btnComplete.isEnabled = true
             }
         })
     }
@@ -94,6 +100,13 @@ class AddNoticeActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return super.onSupportNavigateUp()
+    }
+
+    override fun onBackPressed() {
+        androidx.appcompat.app.AlertDialog.Builder(this).setTitle("유아노트").setMessage("작성을 취소하시겠습니까?").setPositiveButton("확인",
+            DialogInterface.OnClickListener { dialogInterface, i ->
+                finish()
+            }).setNegativeButton("취소", DialogInterface.OnClickListener { dialogInterface, i ->  }).show()
     }
 
     //Uri -- > 절대경로로 바꿔서 리턴시켜주는 메소드

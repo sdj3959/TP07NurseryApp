@@ -1,6 +1,7 @@
 package com.sdj2022.tp07nurseryapp
 
 import android.Manifest
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +10,9 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -61,6 +64,11 @@ class MainActivity : AppCompatActivity() {
         binding.nav.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_logout -> {
+                    val pref = getSharedPreferences("account", MODE_PRIVATE)
+                    val editor = pref.edit()
+                    editor.putString("auto","0")
+                    editor.commit()
+
                     val intent = Intent(this@MainActivity, AccountActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -94,6 +102,8 @@ class MainActivity : AppCompatActivity() {
                 )
 
                 GUserData.userData = userData
+
+                Toast.makeText(this, "로그인 계정 : ${GUserData.userData["email"]}", Toast.LENGTH_SHORT).show()
 
 
                 // BottomNavigationView+Fragments
@@ -157,6 +167,11 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
             binding.drawerLayout.closeDrawer(GravityCompat.START)
-        }else finish()
+        }else {
+            AlertDialog.Builder(this).setTitle("유아노트").setMessage("앱이 종료됩니다.").setPositiveButton("종료",
+                DialogInterface.OnClickListener { dialogInterface, i -> 
+                    finish()
+                }).setNegativeButton("취소", DialogInterface.OnClickListener { dialogInterface, i ->  }).show()
+        }
     }
 }//MainActivity

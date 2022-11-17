@@ -36,6 +36,8 @@ class TripFragment:Fragment() {
 
         binding.btnSearch.setOnClickListener{
 
+            binding.btnSearch.isEnabled = false
+
             if(binding.etSearch.text.toString() != ""){
                 binding.progressBar.visibility = View.VISIBLE
 
@@ -45,11 +47,14 @@ class TripFragment:Fragment() {
 
                 // json 파싱 후 아이템들 리사이클러뷰에 배치
                 loadTripData()
+
+                binding.btnSearch.isEnabled = true
             }else{
                 AlertDialog.Builder(activity).setMessage("검색어를 입력하세요").setPositiveButton("확인", object : OnClickListener{
                     override fun onClick(p0: DialogInterface?, p1: Int) {
                     }
                 }).show()
+                binding.btnSearch.isEnabled = true
             }
         }
         return binding.root
@@ -62,6 +67,9 @@ class TripFragment:Fragment() {
     }
 
     fun loadTripData(){
+
+        binding.tvNoSearch.visibility = View.INVISIBLE
+
         val serviceKey = "fb37113b-1a86-452a-a57b-c83f6df97d26"
 
         val retrofit = Retrofit.Builder()

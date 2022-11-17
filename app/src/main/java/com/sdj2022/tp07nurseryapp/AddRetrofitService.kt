@@ -59,4 +59,13 @@ interface AddRetrofitService {
     fun getFoodmenuData(@Query("nursery") nursery:String?):Call<String>
 
     // 알림장
+    @Multipart
+    @POST("NurseryApp/insertNote.php")
+    fun noteData(
+        @PartMap dataPart: HashMap<String,String?>,
+        @Part filePart:MultipartBody.Part?
+    ):Call<String>
+
+    @GET("NurseryApp/loadNote.php")
+    fun getNoteData(@Query("name") name:String, @Query("nursery") nursery:String?):Call<MutableList<NoteItem>>
 }

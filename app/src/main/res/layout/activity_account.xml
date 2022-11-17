@@ -90,28 +90,48 @@
         android:fontFamily="@font/bmjua"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/et_pw"
-        android:layout_marginTop="40dp"
+        android:layout_below="@id/cb_auto"
+        android:layout_marginTop="20dp"
         android:layout_alignLeft="@id/et_email"
         android:background="@drawable/custom_image_login_btn"/>
 
-<!--    <CheckBox-->
-<!--        android:id="@+id/checkbox"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/et_pw"-->
-<!--        android:buttonTint="#00BCEC"-->
-<!--        android:layout_toLeftOf="@id/tv_save"/>-->
+    <CheckBox
+        android:id="@+id/cb_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_pw"
+        android:buttonTint="#00BCEC"
+        android:layout_alignLeft="@id/et_pw"/>
 
-<!--    <TextView-->
-<!--        android:id="@+id/tv_save"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="계정 저장"-->
-<!--        android:layout_below="@id/et_pw"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:textSize="18sp"/>-->
+    <TextView
+        android:id="@+id/tv_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="계정 기억하기"
+        android:textColor="@color/gray"
+        android:layout_below="@id/et_pw"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/cb_save"
+        android:textSize="18sp"/>
+
+    <CheckBox
+        android:id="@+id/cb_auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/etc"
+        android:layout_toRightOf="@id/tv_save"
+        android:layout_below="@id/et_pw"/>
+
+    <TextView
+        android:id="@+id/tv_auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="자동로그인"
+        android:textColor="@color/gray"
+        android:layout_toRightOf="@id/cb_auto"
+        android:layout_below="@id/et_pw"
+        android:textSize="18sp"
+        android:layout_marginTop="15dp"/>
 
     <TextView
         android:id="@+id/tv_register"
