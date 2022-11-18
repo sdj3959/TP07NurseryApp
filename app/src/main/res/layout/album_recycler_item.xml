@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/iv"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:src="@drawable/bg_one02"
             android:layout_below="@id/tv_date"
             android:adjustViewBounds="true"

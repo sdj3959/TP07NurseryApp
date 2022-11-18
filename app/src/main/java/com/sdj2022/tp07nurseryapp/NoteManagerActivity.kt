@@ -52,7 +52,10 @@ class NoteManagerActivity : AppCompatActivity() {
             Snackbar.make(binding.root,"${binding.spinnerChildren.selectedItem} 조회", Snackbar.LENGTH_SHORT).show()
         }
 
-        binding.btnSearch.setOnClickListener { loadData() }
+        binding.btnSearch.setOnClickListener {
+            binding.recycler.scrollToPosition(0)
+            Snackbar.make(binding.root,"${binding.spinnerChildren.selectedItem} 조회", Snackbar.LENGTH_SHORT).show()
+            loadData() }
 
         // 더미데이터
 //        items.add(NoteItem("To 홍길동 학부모님","https://firebasestorage.googleapis.com/v0/b/tp07nurseryapp.appspot.com/o/profile%2FIMG_20221115014712.png?alt=media&token=a271785e-36da-472f-8000-8a8de40e8c3c", "짧막한 설명 글입니다 오늘 재밌게 코딩합니다..","2022년 12월 12일"))
@@ -88,6 +91,11 @@ class NoteManagerActivity : AppCompatActivity() {
                 Toast.makeText(this@NoteManagerActivity, t.message, Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadData()
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -15,18 +15,45 @@
             android:id="@+id/profile"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/user"/>
+        <TextView
+            android:id="@+id/nursery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="왕십리어린이집"
+            android:textSize="20sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_above="@id/line"
+            android:layout_toRightOf="@id/profile"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"/>
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/light_gray"
+            android:layout_toRightOf="@id/profile"
+            android:layout_above="@id/name"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="70dp"/>
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="임꺽정 교사"
             android:textSize="20sp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/profile"
-            android:layout_marginTop="10dp"/>
+            android:textColor="@color/gray"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_toRightOf="@id/profile"
+            android:layout_alignBottom="@id/profile"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="20dp"/>
 
     </RelativeLayout>
 

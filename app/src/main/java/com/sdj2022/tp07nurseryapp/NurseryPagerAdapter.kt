@@ -21,6 +21,7 @@ class NurseryPagerAdapter constructor(val context: Context, var items:MutableLis
     override fun onBindViewHolder(holder: VH, position: Int) {
         Glide.with(context).load(items[position].profile).into(holder.binding.profile)
         holder.binding.name.text = items[position].name
+        holder.binding.nursery.text = items[position].nursery
     }
 
     override fun getItemCount(): Int = items.size

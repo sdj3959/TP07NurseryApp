@@ -43,7 +43,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/appbar_layout"
         android:layout_above="@id/fab"
-        android:src="@drawable/bg_one02"
         android:layout_margin="10dp"
         android:padding="24dp"/>
 

@@ -57,7 +57,8 @@
             android:layout_gravity="left"
             app:menu="@menu/nav_menu"
             app:headerLayout="@layout/drawer_header"
-            app:itemTextAppearance="@style/RobotoTextViewStyle"/>
+            app:itemTextAppearance="@style/RobotoTextViewStyle"
+            android:background="@color/background_gray"/>
 
     </androidx.drawerlayout.widget.DrawerLayout>
     

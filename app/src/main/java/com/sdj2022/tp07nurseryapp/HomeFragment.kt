@@ -48,10 +48,11 @@ class HomeFragment:Fragment() {
                     var profile = document["imgUrl"].toString()
                     var name = if(document["position"]?.equals("1")!!) document["name"].toString()+" 교사"
                                 else document["name"].toString()+" 원장님"
+                    var nursery = document["nursery"].toString()
 
                     if(name.contains("원장님")){
-                        nurseryEmployee.add(0, NurseryPagerItem(profile,name))
-                    }else nurseryEmployee.add(NurseryPagerItem(profile,name))
+                        nurseryEmployee.add(0, NurseryPagerItem(profile,name,nursery))
+                    }else nurseryEmployee.add(NurseryPagerItem(profile,name,nursery))
                 }
             }
             binding?.pager?.adapter = NurseryPagerAdapter(view.context, nurseryEmployee)

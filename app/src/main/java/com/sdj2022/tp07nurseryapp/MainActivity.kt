@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.kakao.util.maps.helper.Utility
 import com.sdj2022.tp07nurseryapp.databinding.ActivityMainBinding
+import de.hdodenhof.circleimageview.CircleImageView
 import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
@@ -60,6 +61,8 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24)
 
         val tvName =binding.nav.getHeaderView(0).findViewById<TextView>(R.id.tv_name) //DrawerNavigation headerView
+        val tvNursery =binding.nav.getHeaderView(0).findViewById<TextView>(R.id.tv_nursery)
+        val profile = binding.nav.getHeaderView(0).findViewById<CircleImageView>(R.id.profile)
 
         binding.nav.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -158,6 +161,9 @@ class MainActivity : AppCompatActivity() {
                 if(GUserData.userData["position"].equals("0")) tvName.text = "${GUserData.userData["name"]} 부모님"
                 else if(GUserData.userData["position"].equals("1")) tvName.text = "${GUserData.userData["name"]} 교사"
                 else tvName.text = "${GUserData.userData["name"]} 원장"
+
+                tvNursery.text = GUserData.userData["nursery"]
+                Glide.with(this).load(GUserData.userData["profile"]).into(profile)
 
             }
         }
