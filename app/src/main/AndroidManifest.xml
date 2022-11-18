@@ -3,16 +3,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.sdj2022.tp07nurseryapp">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/nursery_app_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/nursery_app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TP07NurseryApp"
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
         tools:targetApi="31">
+        <activity
+            android:name=".MapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddAlbumActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddNoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddNoticeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NoteManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NoteParentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PhotoActivity"
+            android:exported="false"
+            android:theme="@style/PhotoActivity"/>
+        <activity
+            android:name=".NurseryInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FoodMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CalendarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AlbumActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NoticeActivity"
+            android:exported="false" />
         <activity
             android:name=".RegisterDirectorActivity"
             android:exported="false" />
@@ -40,6 +85,8 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="4398cfb19f0df1cc552cb866edfab4ac"/>
     </application>
 
 </manifest>

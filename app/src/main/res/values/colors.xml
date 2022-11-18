@@ -10,4 +10,6 @@
     <color name="brand">#FFFF9745</color>
     <color name="etc">#FF00BCEC</color>
     <color name="gray">#FF3C3C3C</color>
+    <color name="light_gray">#FF9E9E9E</color>
+    <color name="background_gray">#FFEAEAEA</color>
 </resources>

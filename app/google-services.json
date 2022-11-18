@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "854471231207",
+    "project_id": "tp07nurseryapp",
+    "storage_bucket": "tp07nurseryapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854471231207:android:5c8f8e98adf11bef2b8442",
+        "android_client_info": {
+          "package_name": "com.sdj2022.tp07nurseryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854471231207-ju59if693qvhb1u71nfi27403ufjhq59.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCSZfzCzOCbKOA5f2gKeRtVrIoeZfVOEs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854471231207-ju59if693qvhb1u71nfi27403ufjhq59.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

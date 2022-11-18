@@ -19,3 +19,15 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep class com.kakao.sdk.**.model.* { <fields>; }
+-keep class * extends com.google.gson.TypeAdapter
+
+-keep class net.daum.** {*;}
+-keep class android.opengl.** {*;}
+-keep class com.kakao.util.maps.helper.** {*;}
+-keepattributes Signature
+-keepclassmembers class * {
+public static *;
+public *;
+}
